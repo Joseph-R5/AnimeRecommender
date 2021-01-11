@@ -1,0 +1,24 @@
+h1 {
+    font-family: 'Roboto';
+    text-align: center;
+    font-size: xx-large;
+    margin: auto;
+    margin-bottom: 10px;
+    padding-top: 20px;
+}
+
+.recAnimeListContainer {
+    /* animation: recommended-anime-load 1400ms; */
+}
+
+@keyframes recommended-anime-load {
+    0% {
+        transform: translateY(40px);
+        opacity: 0;
+      }
+    
+      100% {
+        transform: translateY(0px);
+        opacity: 1;
+      }
+}

@@ -1,0 +1,13 @@
+.filterOptionsList {
+    list-style-type: none;
+}
+
+.filterOptionsList li {
+    margin: 0px;
+    padding: 0px;
+}
+
+.filterOptionsContainer {
+    padding: auto;
+    margin: auto;
+}

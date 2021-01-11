@@ -1,0 +1,25 @@
+.optionsTitle {
+    color: white;
+    padding-top: 10px;
+    text-align: left;
+    font-size: 1.75rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.sideMenuContainer {
+    position: 'sticky';
+    z-index: 999;
+    top: 0;
+}
+
+.myAnimeListContainer {
+    display: flex;
+    list-style-type: none;
+    flex-wrap: wrap-reverse;
+}
+
+.myAnimeListContainer li {
+    padding: 2px;
+}

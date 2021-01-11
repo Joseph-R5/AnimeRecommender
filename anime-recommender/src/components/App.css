@@ -1,0 +1,15 @@
+body {
+    background-color: #3B4956;  
+}
+
+.headerList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.headerList li {
+    flex: auto;
+}

@@ -1,0 +1,26 @@
+.dialogListContainer {
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+    text-align: center;
+    width: 100%;
+}
+
+.dialogListInfoContainer {
+}
+
+.dialogListInformationItem{
+    padding-bottom: 5%;
+    padding-top: 5%;
+}
+
+.dialogCardMedia {
+}
+
+.dialogListInformationContainer {
+}
+
+.modalTitle {
+    color: black;
+    text-align: center;
+}
