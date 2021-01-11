@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Drawer from "@material-ui/core/Drawer";
@@ -6,15 +6,14 @@ import Hidden from "@material-ui/core/Hidden";
 import FilterOptions from "../FilterOptions/filterOptions";
 import GenreOptions from "../GenreOptions/genreOptions";
 import AnimeListChip from "../AnimeListChip/animeListChip";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { calculateScrollDrawerPosition } from "../../util/utils";
+import { makeStyles } from "@material-ui/core/styles";
+import { calculateDrawerWidth, calculateScrollDrawerPosition } from "../../util/utils";
 import { setMobileOpen } from "../../actions/index";
 import useScrollbar from "../../hooks/useScrollbar";
 import "./sideMenu.css";
+import useWindowSize from "../../hooks/useWindowSize";
 
-const drawerWidth = 317;
-
-const useStyles = scrollPosition => makeStyles((theme) => ({
+const useStyles = (scrollPosition, scrollDrawerWidth) => makeStyles((theme) => ({
     root: {
         display: 'flex',
     },
@@ -27,14 +26,14 @@ const useStyles = scrollPosition => makeStyles((theme) => ({
     drawerPaper: {
         background: '#3B4956',
         height: '100%',
-        width: 317,
+        width: scrollDrawerWidth,
         top: scrollPosition,
         boxShadow: "10px 2px 10px -2px rgba(0,0,0,0.3)"
     },
     drawerPaperMobile: {
         background: '#3B4956',
         height: '100%',
-        width: drawerWidth,
+        width: scrollDrawerWidth,
         boxShadow: "10px 2px 10px -2px rgba(0,0,0,0.3)"
     },
 }));
@@ -44,10 +43,9 @@ const SideMenu = (props) => {
     const { mobileOpen, setMobileOpen } = props;
     const scrollPosition = useScrollbar();
     const scrollDrawerPosition = calculateScrollDrawerPosition(scrollPosition)
-
-    //TODO create responsive width unit to pass in for drawer
-
-    const classes = useStyles(scrollDrawerPosition)();
+    const screenWidth = useWindowSize().width;
+    const scrollDrawerWidth = calculateDrawerWidth(screenWidth);
+    const classes = useStyles(scrollDrawerPosition, scrollDrawerWidth)();
 
     const drawer = (
         <div className="drawerContainer">
@@ -104,18 +102,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SideMenu);
-
-{/* <Drawer
-variant="temporary"
-anchor={theme.direction === "rtl" ? "right" : "left"}
-open={!mobileOpen}
-onClose={() => setMobileOpen(mobileOpen)}
-classes={{
-    paper: classes.drawerPaperMobile
-}}
-ModalProps={{
-    keepMounted: true
-}}
->
-{drawer}
-</Drawer> */}
