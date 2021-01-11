@@ -152,4 +152,6 @@ RecommendationAnimeList.propTypes = {
 
 export default
     withHooksHOC(
-        connect(mapStateToProps, mapDispatchToProps)(RecommendationAnimeList));
+        connect(mapStateToProps, mapDispatchToProps)
+        (RecommendationAnimeList)
+    );

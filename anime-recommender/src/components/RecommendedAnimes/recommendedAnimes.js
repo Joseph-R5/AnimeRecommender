@@ -22,7 +22,8 @@ const RecommendedAnimes = (props) => {
     } = props;
 
     const isMobile = useCheckMobileScreen();
-    const slicedList = animeRecommendationListSlicer(index, list, isMobile)
+    const slicedList = animeRecommendationListSlicer(index, list, false)
+    const pictureHeight = isMobile ? 150 : 200;
 
     if (slicedList.length > 0) {
         return (

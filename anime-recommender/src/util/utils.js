@@ -157,6 +157,22 @@ export const calculateScrollDrawerPosition = (positionY) => {
     return yAxis;
 }
 
+export const calculateDrawerWidth = (positionX) => {
+    if (positionX !== undefined) {
+        if (positionX > 1650) {
+            return 317;
+        } else if (positionX > 1410) {
+            return 270;
+        } else if (positionX > 1130) {
+            return 233;
+        } else if (positionX >= 1024) {
+            return 223;
+        } else { 
+            return 0;
+        }
+    }
+}
+
 export const getPaginationPageCount = (listLength) => {
     let count = 0;
     let tmp = [count];
@@ -178,7 +194,7 @@ export const getActivePage = (index, pageIndex, paginationPageCount) => {
     const newPaginationPageCount = getAllPaginationCounts(paginationPageCount);
     if (paginationPageCount[pageIndex] === index) {
         return "circleActive";
-    } else if (newPaginationPageCount[pageIndex - 1] === index) { 
+    } else if (newPaginationPageCount[pageIndex - 1] === index) {
         return "circleActive";
     } else {
         return "circle"
