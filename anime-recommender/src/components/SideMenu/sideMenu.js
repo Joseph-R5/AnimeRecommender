@@ -9,6 +9,7 @@ import AnimeListChip from "../AnimeListChip/animeListChip";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { calculateScrollDrawerPosition } from "../../util/utils";
 import { setMobileOpen } from "../../actions/index";
+import useScrollbar from "../../hooks/useScrollbar";
 import "./sideMenu.css";
 
 const drawerWidth = 317;
@@ -40,29 +41,13 @@ const useStyles = scrollPosition => makeStyles((theme) => ({
 
 
 const SideMenu = (props) => {
-    const [scrollPosition, setScrollPosition] = useState(0);
+    const { mobileOpen, setMobileOpen } = props;
+    const scrollPosition = useScrollbar();
+    const scrollDrawerPosition = calculateScrollDrawerPosition(scrollPosition)
 
-    const handleScroll = () => {
-        const position = window.pageYOffset;
-        setScrollPosition(position);
-    };
+    //TODO create responsive width unit to pass in for drawer
 
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll, { passive: true });
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
-    const theme = useTheme();
-
-    const { mobileOpen,
-        setMobileOpen
-    } = props;
-
-
-    const classes = useStyles(calculateScrollDrawerPosition(scrollPosition))();
+    const classes = useStyles(scrollDrawerPosition)();
 
     const drawer = (
         <div className="drawerContainer">
@@ -74,7 +59,7 @@ const SideMenu = (props) => {
 
     return (
         <div className={classes.root}>
-            <Hidden smUp implementation="css">
+            <Hidden smDown implementation="css">
                 <Drawer
                     classes={{
                         paper: classes.drawerPaperMobile
@@ -84,7 +69,7 @@ const SideMenu = (props) => {
                     ModalProps={{
                         keepMounted: true
                     }}
-                    onClose={() => 
+                    onClose={() =>
                         setMobileOpen(false)
                     }
                 >

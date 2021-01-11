@@ -9,7 +9,8 @@
 
 .recommendedAnimeList {
     display: flex;
-    justify-content: left;
+    justify-content: center;
+    flex-wrap: wrap;
     max-height: 250px;    
 }
 
