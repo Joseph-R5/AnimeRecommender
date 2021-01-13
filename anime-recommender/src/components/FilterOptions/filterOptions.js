@@ -35,6 +35,8 @@ const FilterOptions = (props) => {
                             />
                         </li>
                     }
+
+                    return null;
                 })}
             </ul>
         </div>
