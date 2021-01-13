@@ -14,7 +14,6 @@ import {
     CHANGE_MOVIE_INDEX,
     CHANGE_OVA_INDEX
 } from "../constants/action-types";
-import useCheckMobileScreen from "../hooks/useCheckMobileScreen";
 
 export const roundTo2DP = (val) => {
     return val.toFixed(1);
@@ -97,7 +96,7 @@ export const constructRecommendationURL = (animeTitleList, sectionType, filterOp
 }
 
 export const addFilterOptions = (base, filterOptions) => {
-    filterOptions.map((option) => {
+    filterOptions.forEach((option) => {
         if (option.enabled) {
             switch (option.title) {
                 case FINISHED_AIRING:
@@ -119,7 +118,7 @@ export const addFilterOptions = (base, filterOptions) => {
 
 export const addGenreOptions = (base, genreOptions) => {
     if (genreOptions) {
-        genreOptions.map((genre) => {
+        genreOptions.forEach((genre) => {
             base.includes("&genre") ? base = base.concat("," + genre.id) : base = base.concat("&genre=" + genre.id)
         })
     }
@@ -217,4 +216,8 @@ export const getAllPaginationCounts = (paginationPageCount) => {
 export const calculateAverageAnimeWatchTime = (numberOfEpisodes, isMovie) => {
     const multiplier = isMovie === 'movie' ? 120 : 25;
     return Math.round((numberOfEpisodes * multiplier) / 1440);
+}
+
+export const convertAcronym = (section) => {
+    return section === ONA ? "Original Net Animation" : section;
 }

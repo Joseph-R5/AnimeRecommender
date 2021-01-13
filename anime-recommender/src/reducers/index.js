@@ -150,22 +150,22 @@ function rootReducer(state = initialState, action) {
     case FIND_MOVIE_RECOMMENDATIONS:
       return {
         ...state,
-        movieRecommendations: action.filteredAnimeRecommendationList
+        movieRecommendations: action.movieResults
       }
     case FIND_TV_RECOMMENDATIONS:
       return {
         ...state,
-        tvRecommendations: action.filteredAnimeRecommendationList
+        tvRecommendations: action.tvResults
       }
     case FIND_ONA_RECOMMENDATIONS:
       return {
         ...state,
-        onaRecommendations: action.filteredAnimeRecommendationList
+        onaRecommendations: action.onaResults
       }
     case FIND_OVA_RECOMMENDATIONS:
       return {
         ...state,
-        ovaRecommendations: action.filteredAnimeRecommendationList
+        ovaRecommendations: action.ovaResults
       }
     case CHANGE_TV_INDEX:
       return {

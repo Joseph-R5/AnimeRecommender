@@ -1,7 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import "./recommendedAnimes.css";
-import Spinner from "../Spinner/spinner";
 import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -10,7 +9,6 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import 'fontsource-roboto';
 import { loadSpinner, toggleModal, increaseRecommendedIndex, decreaseRecommendedIndex } from "../../actions/index";
 import { animeRecommendationListSlicer, showArrowNext, showArrowBack } from "../../util/utils";
-import useCheckMobileScreen from "../../hooks/useCheckMobileScreen";
 
 const RecommendedAnimes = (props) => {
 
@@ -18,12 +16,9 @@ const RecommendedAnimes = (props) => {
         list, index, showModal,
         toggleModal, loadSpinner,
         section, increaseRecommendedIndex, decreaseRecommendedIndex, 
-        isLoading
     } = props;
 
-    const isMobile = useCheckMobileScreen();
     const slicedList = animeRecommendationListSlicer(index, list, false)
-    const pictureHeight = isMobile ? 150 : 200;
 
     if (slicedList.length > 0) {
         return (

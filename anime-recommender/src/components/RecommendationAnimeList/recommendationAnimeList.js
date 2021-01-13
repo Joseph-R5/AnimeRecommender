@@ -85,11 +85,11 @@ class RecommendationAnimeList extends Component {
                                     animeList={movieRecommendations}
                                     index={movieRecommendationIndex}
                                 />
-                                <DynamicRecommendationsList
+                                {/* <DynamicRecommendationsList
                                     section={OVA}
                                     animeList={ovaRecommendations}
                                     index={ovaRecommendationIndex}
-                                />
+                                /> */}
                                 <DynamicRecommendationsList
                                     section={ONA}
                                     animeList={onaRecommendations}
