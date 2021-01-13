@@ -72,19 +72,21 @@ export function getRecommendationlist(animeTitleList, filterOptions, filterGenre
       fetch(constructRecommendationURL(animeTitleList, "movie", filterOptions, filterGenreOptions)),
       fetch(constructRecommendationURL(animeTitleList, "tv", filterOptions, filterGenreOptions)),
       fetch(constructRecommendationURL(animeTitleList, "ona", filterOptions, filterGenreOptions)),
-    ]).then(responses => Promise.all(
-      responses.map(response => response.json())
-    )).then(responses => {
-      const movieResults = filterDuplicateRecommendedAnime(animeTitleList, responses[0].results)
-      const tvResults = filterDuplicateRecommendedAnime(animeTitleList, responses[1].results)
-      const onaResults = filterDuplicateRecommendedAnime(animeTitleList, responses[2].results)
+    ]).then(responses =>
+      Promise.all(responses.map(response => response.json())
+      )).then(responses => {
+        const [movieResponse, tvResponse, onaRepsonse] = responses;
 
-      dispatch({ type: FIND_MOVIE_RECOMMENDATIONS, movieResults, animeTitleList})
-      dispatch({ type: FIND_TV_RECOMMENDATIONS, tvResults, animeTitleList})
-      dispatch({ type: FIND_ONA_RECOMMENDATIONS, onaResults, animeTitleList})
-    }).catch(error => {
-      // console.log(error)
-    })
+        const movieResults = filterDuplicateRecommendedAnime(animeTitleList, movieResponse.results)
+        const tvResults = filterDuplicateRecommendedAnime(animeTitleList, tvResponse.results)
+        const onaResults = filterDuplicateRecommendedAnime(animeTitleList, onaRepsonse.results)
+
+        dispatch({ type: FIND_MOVIE_RECOMMENDATIONS, movieResults, animeTitleList })
+        dispatch({ type: FIND_TV_RECOMMENDATIONS, tvResults, animeTitleList })
+        dispatch({ type: FIND_ONA_RECOMMENDATIONS, onaResults, animeTitleList })
+      }).catch(error => {
+        // console.log(error)
+      })
   }
 }
 
