@@ -15,7 +15,8 @@ import {
   FIND_TV_RECOMMENDATIONS,
   FIND_OVA_RECOMMENDATIONS,
   FIND_ONA_RECOMMENDATIONS,
-  SET_MOBILE_OPEN
+  SET_MOBILE_OPEN,
+  LOAD_ERROR_MSG
 } from "../constants/action-types";
 
 import {
@@ -26,6 +27,8 @@ import {
   getSectionIndexOption,
   getExactAnimeFromAPI
 } from "../util/utils";
+
+import { FAILED_TO_FETCH_DATA } from "../constants/error-messages";
 
 export function updateQuery(payload) {
   return { type: UPDATE_QUERY, payload }
@@ -85,7 +88,8 @@ export function getRecommendationlist(animeTitleList, filterOptions, filterGenre
         dispatch({ type: FIND_TV_RECOMMENDATIONS, tvResults, animeTitleList })
         dispatch({ type: FIND_ONA_RECOMMENDATIONS, onaResults, animeTitleList })
       }).catch(error => {
-        // console.log(error)
+        const payload = FAILED_TO_FETCH_DATA;
+        dispatch({ type: LOAD_ERROR_MSG, payload })
       })
   }
 }
