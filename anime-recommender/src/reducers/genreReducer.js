@@ -12,8 +12,7 @@ export default function genres(state = initialState, action) {
         case UPDATE_GENRE_FILTER_LIST:
             return {
                 ...state,
-                filterGenreOptions: action.genreList,
-                isLoading: false
+                filterGenreOptions: action.genreList
             }
         case NO_RECOMMENDATIONS_FOUND:
             return {

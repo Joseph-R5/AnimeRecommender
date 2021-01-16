@@ -3,6 +3,7 @@ import {
   DELETE_ANIME,
   FIND_RECOMMENDATIONS,
   LOAD_ERROR_MSG,
+  LOAD_SPINNER,
   NO_RECOMMENDATIONS_FOUND
 } from "../constants/action-types";
 
@@ -15,22 +16,20 @@ import {
 export const checkIfAnimeAlreadyExistsMiddleware = store => next => action => {
   switch (action.type) {
     case ADD_ANIME:
-      const animeTitleSearch = action.animeResults.title
+      const animeTitleSearch = action.animeResults.title;
       const animeTitleList = store.getState().rootReducer.animeTitleList;
 
       if (animeTitleList.includes(animeTitleSearch)) {
-        const payload = ANIME_ALREADY_EXISTS
-        return next({ type: LOAD_ERROR_MSG, payload })
+        return next({type: LOAD_ERROR_MSG, ANIME_ALREADY_EXISTS})
       }
       break;
     case FIND_RECOMMENDATIONS:
       if (action.filteredAnimeRecommendationList.length === 0) {
-        const payload = NO_ANIME_TO_RECOMMEND
-        return next({ type: NO_RECOMMENDATIONS_FOUND, payload })
+        return next({ type: NO_RECOMMENDATIONS_FOUND, NO_ANIME_TO_RECOMMEND })
       }
       break;
     case DELETE_ANIME:
-      const animeTitleListCount = store.getState().animeTitleList.length;
+      const animeTitleListCount = store.getState().rootReducer.animeTitleList.length;
       if (animeTitleListCount === 1) {
         const payload = EMPTY_ANIME_LIST;
         return next({ type: LOAD_ERROR_MSG, payload })

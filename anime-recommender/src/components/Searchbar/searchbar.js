@@ -68,8 +68,15 @@ class ConnectedSearchBar extends Component {
         this.setState({
             text: ""
         }, () => {
-            this.props.loadSpinner(true);
-            this.props.addAnime(anime);
+            let myPromise = new Promise((resolve, reject) => {
+                this.props.loadSpinner(true);
+                this.props.addAnime(anime);
+                resolve();
+            })
+            
+            myPromise.then(() => {
+                this.props.loadSpinner(false)
+            })
         })
     }
 
@@ -109,8 +116,8 @@ function mapStateToProps(state) {
         query: state.rootReducer.query,
         autoCompleteList: state.rootReducer.autoCompleteList,
         animeList: state.rootReducer.animeList,
-        showErrorMsg: state.rootReducer.showErrorMsg,
-        errorResponse: state.rootReducer.errorResponse
+        showErrorMsg: state.errorHandler.showErrorMsg,
+        errorResponse: state.errorHandler.errorResponse
     };
 }
 

@@ -37,7 +37,7 @@ const GenreOptions = (props) => {
                 getOptionLabel={(option) => option.title}
                 onChange={(event, values) => {
                     props.loadSpinner(true)
-                    props.updateGenreList(values)
+                    props.updateGenreList(values, false)
                 }}
                 renderInput={(params) => (
                     <CssTextField
@@ -53,7 +53,7 @@ const GenreOptions = (props) => {
 
 function mapStateToProps(state) {
     return {
-        filterGenreOptions: state.rootReducer.filterGenreOptions
+        filterGenreOptions: state.genres.filterGenreOptions
     }
 }
 
