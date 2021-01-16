@@ -6,10 +6,8 @@ import {
   FIND_RECOMMENDATIONS,
   DELETE_ANIME,
   TOGGLE_FILTER_BUTTON,
-  TOGGLE_MODAL,
   LOAD_SPINNER,
   CLEAR_RECOMMENDATIONS,
-  SET_MOBILE_OPEN
 } from "../constants/action-types";
 
 import filteredListData from "../data/filteredListData";
@@ -20,6 +18,7 @@ import genres from "./genreReducer";
 import errorHandler from "./errorHandlerReducer";
 import loader from "./loaderReducer";
 import mobileReducer from "./mobileReducer";
+import modalReducer from "./modalReducer";
 
 const initialState = {
   animeList: [],
@@ -28,7 +27,6 @@ const initialState = {
   query: "",
   errorResponse: "",
   showErrorMsg: false,
-  showModal: false,
   isLoading: false,
   autoCompleteLoading: false,
   filterOptions: filteredListData,
@@ -89,13 +87,6 @@ function rootReducer(state = initialState, action) {
         filterOptions: [...state.filterOptions],
         isLoading: false
       }
-    case TOGGLE_MODAL:
-      return {
-        ...state,
-        showModal: !action.toggle,
-        recommendedAnime: action.json,
-        isLoading: false
-      }
     case LOAD_SPINNER:
       return {
         ...state,
@@ -119,7 +110,8 @@ const reducer = combineReducers({
   paginations,
   genres,
   errorHandler,
-  mobileReducer
+  mobileReducer,
+  modalReducer
 })
 
 export default reducer;

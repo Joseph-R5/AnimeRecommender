@@ -4,6 +4,7 @@ import {
 
 const initialState = {
     showModal: false,
+    recommendedAnime: []
 }
 
 export default function modalReducer(state = initialState, action) {
@@ -13,7 +14,7 @@ export default function modalReducer(state = initialState, action) {
                 ...state,
                 showModal: !action.toggle,
                 recommendedAnime: action.json,
-                isLoading: false
+                // isLoading: false
             }
         default:
             return state;

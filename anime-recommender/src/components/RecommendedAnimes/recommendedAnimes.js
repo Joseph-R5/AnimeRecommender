@@ -15,7 +15,7 @@ const RecommendedAnimes = (props) => {
     const {
         list, index, showModal,
         toggleModal, loadSpinner,
-        section, increaseRecommendedIndex, decreaseRecommendedIndex, 
+        section, increaseRecommendedIndex, decreaseRecommendedIndex,
     } = props;
 
     const slicedList = animeRecommendationListSlicer(index, list, false)
@@ -48,8 +48,15 @@ const RecommendedAnimes = (props) => {
                                 <CardMedia
                                     style={{ height: 300, width: 200 }}
                                     onClick={() => {
-                                        loadSpinner(true);
-                                        toggleModal(showModal, el)
+                                        let myPromise = new Promise((resolve, reject) => {
+                                            loadSpinner(true);
+                                            toggleModal(showModal, el);
+                                            resolve();
+                                        })
+                                        
+                                        myPromise.then(() => {
+                                            loadSpinner(false)
+                                        })
                                     }}
                                     image={el.image_url}
                                 />
@@ -79,7 +86,7 @@ const RecommendedAnimes = (props) => {
 
 function mapStateToProps(state) {
     return {
-        showModal: state.rootReducer.showModal,
+        showModal: state.modalReducer.showModal,
         isLoading: state.rootReducer.isLoading
     };
 }

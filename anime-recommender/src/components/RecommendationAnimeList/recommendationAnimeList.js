@@ -117,7 +117,7 @@ function mapStateToProps(state) {
         filterGenreOptions: state.genres.filterGenreOptions,
         showErrorMsg: state.errorHandler.showErrorMsg,
         errorResponse: state.errorHandler.errorResponse,
-        showModal: state.rootReducer.showModal,
+        showModal: state.modalReducer.showModal,
         isLoading: state.rootReducer.isLoading,
         recommendedIndex: state.rootReducer.recommendedIndex,
         movieRecommendations: state.recommendations.movieRecommendations,
