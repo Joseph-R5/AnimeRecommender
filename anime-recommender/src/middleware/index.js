@@ -17,7 +17,7 @@ export const checkIfAnimeAlreadyExistsMiddleware = store => next => action => {
   switch (action.type) {
     case ADD_ANIME:
       const animeTitleSearch = action.animeResults.title;
-      const animeTitleList = store.getState().rootReducer.animeTitleList;
+      const animeTitleList = store.getState().animeListReducer.animeTitleList;
 
       if (animeTitleList.includes(animeTitleSearch)) {
         const payload = ANIME_ALREADY_EXISTS
@@ -30,7 +30,7 @@ export const checkIfAnimeAlreadyExistsMiddleware = store => next => action => {
       }
       break;
     case DELETE_ANIME:
-      const animeTitleListCount = store.getState().rootReducer.animeTitleList.length;
+      const animeTitleListCount = store.getState().animeListReducer.animeTitleList.length;
       if (animeTitleListCount === 1) {
         const payload = EMPTY_ANIME_LIST;
         return next({ type: LOAD_ERROR_MSG, payload })

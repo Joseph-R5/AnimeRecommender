@@ -122,7 +122,7 @@ function mapStateToProps(state) {
     return {
         query: state.search.query,
         autoCompleteList: state.search.autoCompleteList,
-        animeList: state.rootReducer.animeList,
+        animeList: state.animeListReducer.animeList,
         showErrorMsg: state.errorHandler.showErrorMsg,
         errorResponse: state.errorHandler.errorResponse
     };
