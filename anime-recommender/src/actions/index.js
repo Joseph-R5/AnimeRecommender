@@ -118,8 +118,17 @@ export function toggleFilterButton(option) {
   return { type: TOGGLE_FILTER_BUTTON, option }
 }
 
-export function updateGenreList(genreList) {
-  return { type: UPDATE_GENRE_FILTER_LIST, genreList }
+export function updateGenreList(genreList, bool) {
+  const updateGenreOptions = (genreList, dispatch) => new Promise((resolve, reject) => {
+    dispatch({ type: UPDATE_GENRE_FILTER_LIST, genreList })
+    resolve();
+  })
+
+  return (dispatch) => {
+    updateGenreOptions(genreList, dispatch).then(() => {
+      dispatch({ type: LOAD_SPINNER, bool })
+    })
+  }
 }
 
 export function toggleModal(toggle, anime) {

@@ -15,7 +15,6 @@ export default function errorHandler(state = initialState, action) {
                 ...state,
                 showErrorMsg: true,
                 errorResponse: action.payload,
-                isLoading: false
             }
         case CLOSE_ERROR_MSG:
             return {
