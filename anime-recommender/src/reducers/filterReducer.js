@@ -16,8 +16,7 @@ export default function filters(state = initialState, action) {
             tempFilterOptions[index].enabled = !tempFilterOptions[index].enabled
             return {
                 ...state,
-                filterOptions: [...state.filterOptions],
-                isLoading: false
+                filterOptions: [...state.filterOptions]
             }
         default:
             return state;

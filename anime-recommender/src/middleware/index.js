@@ -20,7 +20,8 @@ export const checkIfAnimeAlreadyExistsMiddleware = store => next => action => {
       const animeTitleList = store.getState().rootReducer.animeTitleList;
 
       if (animeTitleList.includes(animeTitleSearch)) {
-        return next({type: LOAD_ERROR_MSG, ANIME_ALREADY_EXISTS})
+        const payload = ANIME_ALREADY_EXISTS
+        return next({type: LOAD_ERROR_MSG, payload})
       }
       break;
     case FIND_RECOMMENDATIONS:

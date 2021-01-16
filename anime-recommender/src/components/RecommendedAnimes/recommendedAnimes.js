@@ -11,7 +11,6 @@ import { loadSpinner, toggleModal, increaseRecommendedIndex, decreaseRecommended
 import { animeRecommendationListSlicer, showArrowNext, showArrowBack } from "../../util/utils";
 
 const RecommendedAnimes = (props) => {
-
     const {
         list, index, showModal,
         toggleModal, loadSpinner,
@@ -19,6 +18,12 @@ const RecommendedAnimes = (props) => {
     } = props;
 
     const slicedList = animeRecommendationListSlicer(index, list, false)
+
+    const toggleModalPromise = (showModal, el) => new Promise((resolve, reject) => {
+        loadSpinner(true);
+        toggleModal(showModal, el)
+        resolve();
+    })
 
     if (slicedList.length > 0) {
         return (
@@ -48,14 +53,8 @@ const RecommendedAnimes = (props) => {
                                 <CardMedia
                                     style={{ height: 300, width: 200 }}
                                     onClick={() => {
-                                        let myPromise = new Promise((resolve, reject) => {
-                                            loadSpinner(true);
-                                            toggleModal(showModal, el);
-                                            resolve();
-                                        })
-                                        
-                                        myPromise.then(() => {
-                                            loadSpinner(false)
+                                        toggleModalPromise(showModal, el).then(() => {
+                                            setTimeout(() => { loadSpinner(false); }, 1000)
                                         })
                                     }}
                                     image={el.image_url}

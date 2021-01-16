@@ -1,13 +1,7 @@
 import {
   ADD_ANIME,
-  AUTO_COMPLETE_SUGGESTION,
-  CLEAR_AUTO_COMPLETE_SUGGESTION,
-  UPDATE_QUERY,
-  FIND_RECOMMENDATIONS,
   DELETE_ANIME,
-  TOGGLE_FILTER_BUTTON,
   LOAD_SPINNER,
-  CLEAR_RECOMMENDATIONS,
 } from "../constants/action-types";
 
 import filteredListData from "../data/filteredListData";
@@ -20,15 +14,12 @@ import loader from "./loaderReducer";
 import mobileReducer from "./mobileReducer";
 import modalReducer from "./modalReducer";
 import search from "./searchReducer";
+import filters from "./filterReducer";
 
 const initialState = {
   animeList: [],
-  autoCompleteList: [],
   animeTitleList: [],
-  errorResponse: "",
-  showErrorMsg: false,
   isLoading: false,
-  filterOptions: filteredListData,
 };
 
 function rootReducer(state = initialState, action) {
@@ -40,11 +31,6 @@ function rootReducer(state = initialState, action) {
         animeList: state.animeList.concat(action.animeResults),
         animeTitleList: [...state.animeTitleList, action.animeResults.title],
         isLoading: false
-      }
-    case FIND_RECOMMENDATIONS:
-      return {
-        ...state,
-        recommendationList: action.filteredAnimeRecommendationList
       }
     case DELETE_ANIME:
       return {
@@ -58,25 +44,10 @@ function rootReducer(state = initialState, action) {
           ...state.animeTitleList.slice(action.payload + 1)
         ]
       }
-    case TOGGLE_FILTER_BUTTON:
-      const index = state.filterOptions.findIndex((obj => obj.title === action.option.title))
-      let tempFilterOptions = state.filterOptions;
-      tempFilterOptions[index].enabled = !tempFilterOptions[index].enabled
-
-      return {
-        ...state,
-        filterOptions: [...state.filterOptions],
-        isLoading: false
-      }
     case LOAD_SPINNER:
       return {
         ...state,
         isLoading: action.bool
-      }
-    case CLEAR_RECOMMENDATIONS:
-      return {
-        ...state,
-        recommendationList: []
       }
     default:
       break;
@@ -93,7 +64,8 @@ const reducer = combineReducers({
   errorHandler,
   mobileReducer,
   modalReducer,
-  search
+  search,
+  filters
 })
 
 export default reducer;

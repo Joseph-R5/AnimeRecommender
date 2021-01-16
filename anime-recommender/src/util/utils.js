@@ -12,7 +12,7 @@ import {
     CHANGE_ONA_INDEX,
     CHANGE_TV_INDEX,
     CHANGE_MOVIE_INDEX,
-    CHANGE_OVA_INDEX
+    CHANGE_OVA_INDEX,
 } from "../constants/action-types";
 
 export const roundTo2DP = (val) => {

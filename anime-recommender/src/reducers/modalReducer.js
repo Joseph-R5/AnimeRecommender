@@ -14,7 +14,6 @@ export default function modalReducer(state = initialState, action) {
                 ...state,
                 showModal: !action.toggle,
                 recommendedAnime: action.json,
-                // isLoading: false
             }
         default:
             return state;

@@ -19,7 +19,7 @@ const FilterOptions = (props) => {
                                     <Checkbox
                                         checked={option.enabled}
                                         onClick={() => {
-                                            loadSpinner(true)
+                                            // loadSpinner(true)
                                             toggleFilterButton(option)
                                         }}
                                         name={option.title}
@@ -45,7 +45,7 @@ const FilterOptions = (props) => {
 
 function mapStateToProps(state) {
     return {
-        filterOptions: state.rootReducer.filterOptions
+        filterOptions: state.filters.filterOptions
     }
 }
 

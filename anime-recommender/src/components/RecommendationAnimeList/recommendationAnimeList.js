@@ -111,9 +111,8 @@ class RecommendationAnimeList extends Component {
 
 function mapStateToProps(state) {
     return {
-        recommendationList: state.rootReducer.recommendationList,
         animeTitleList: state.rootReducer.animeTitleList,
-        filterOptions: state.rootReducer.filterOptions,
+        filterOptions: state.filters.filterOptions,
         filterGenreOptions: state.genres.filterGenreOptions,
         showErrorMsg: state.errorHandler.showErrorMsg,
         errorResponse: state.errorHandler.errorResponse,
@@ -140,7 +139,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 RecommendationAnimeList.propTypes = {
-    recommendationList: PropTypes.array,
     animeTitleList: PropTypes.array,
     filterOptions: PropTypes.array,
     filterGenreOptions: PropTypes.array,
