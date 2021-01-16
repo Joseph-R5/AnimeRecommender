@@ -124,10 +124,10 @@ function mapStateToProps(state) {
         tvRecommendations: state.recommendations.tvRecommendations,
         ovaRecommendations: state.recommendations.ovaRecommendations,
         onaRecommendations: state.recommendations.onaRecommendations,
-        tvRecommendationIndex: state.rootReducer.tvRecommendationIndex,
-        movieRecommendationIndex: state.rootReducer.movieRecommendationIndex,
-        ovaRecommendationIndex: state.rootReducer.ovaRecommendationIndex,
-        onaRecommendationIndex: state.rootReducer.onaRecommendationIndex
+        tvRecommendationIndex: state.paginations.tvRecommendationIndex,
+        movieRecommendationIndex: state.paginations.movieRecommendationIndex,
+        ovaRecommendationIndex: state.paginations.ovaRecommendationIndex,
+        onaRecommendationIndex: state.paginations.onaRecommendationIndex
     };
 }
 

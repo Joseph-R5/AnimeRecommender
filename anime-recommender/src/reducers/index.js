@@ -23,6 +23,7 @@ import {
 import filteredListData from "../data/filteredListData";
 import { combineReducers } from 'redux';
 import recommendations from "./recommendationsReducer";
+import paginations from "./paginationReducer";
 
 const initialState = {
   animeList: [],
@@ -35,10 +36,6 @@ const initialState = {
   showModal: false,
   isLoading: false,
   autoCompleteLoading: false,
-  movieRecommendationIndex: 0,
-  tvRecommendationIndex: 0,
-  ovaRecommendationIndex: 0,
-  onaRecommendationIndex: 0,
   filterOptions: filteredListData,
   mobileOpen: false
 };
@@ -141,26 +138,6 @@ function rootReducer(state = initialState, action) {
         ...state,
         recommendationList: []
       }
-    case CHANGE_TV_INDEX:
-      return {
-        ...state,
-        tvRecommendationIndex: action.newCurrentIndex
-      }
-    case CHANGE_MOVIE_INDEX:
-      return {
-        ...state,
-        movieRecommendationIndex: action.newCurrentIndex
-      }
-    case CHANGE_ONA_INDEX:
-      return {
-        ...state,
-        onaRecommendationIndex: action.newCurrentIndex
-      }
-    case CHANGE_OVA_INDEX:
-      return {
-        ...state,
-        ovaRecommendationIndex: action.newCurrentIndex
-      }
     case SET_MOBILE_OPEN:
       return {
         ...state,
@@ -175,8 +152,8 @@ function rootReducer(state = initialState, action) {
 
 const reducer = combineReducers({
   rootReducer,
-  recommendations
+  recommendations,
+  paginations
 })
 
-// export default rootReducer;
 export default reducer;
