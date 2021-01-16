@@ -19,16 +19,15 @@ import errorHandler from "./errorHandlerReducer";
 import loader from "./loaderReducer";
 import mobileReducer from "./mobileReducer";
 import modalReducer from "./modalReducer";
+import search from "./searchReducer";
 
 const initialState = {
   animeList: [],
   autoCompleteList: [],
   animeTitleList: [],
-  query: "",
   errorResponse: "",
   showErrorMsg: false,
   isLoading: false,
-  autoCompleteLoading: false,
   filterOptions: filteredListData,
 };
 
@@ -41,24 +40,6 @@ function rootReducer(state = initialState, action) {
         animeList: state.animeList.concat(action.animeResults),
         animeTitleList: [...state.animeTitleList, action.animeResults.title],
         isLoading: false
-      }
-    case AUTO_COMPLETE_SUGGESTION:
-      return {
-        ...state,
-        autoCompleteList: action.json.results,
-        autoCompleteLoading: false
-      }
-    case CLEAR_AUTO_COMPLETE_SUGGESTION:
-      return {
-        ...state,
-        autoCompleteList: [],
-        query: "",
-        autoCompleteLoading: false
-      }
-    case UPDATE_QUERY:
-      return {
-        ...state,
-        query: action.payload
       }
     case FIND_RECOMMENDATIONS:
       return {
@@ -111,7 +92,8 @@ const reducer = combineReducers({
   genres,
   errorHandler,
   mobileReducer,
-  modalReducer
+  modalReducer,
+  search
 })
 
 export default reducer;

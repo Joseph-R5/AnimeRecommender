@@ -17,7 +17,6 @@ export default function animeListReducer(state = initialState, action) {
                 query: "",
                 animeList: state.animeList.concat(action.animeResults),
                 animeTitleList: [...state.animeTitleList, action.animeResults.title],
-                currentIndex: state.animeList.length,
                 isLoading: false
             }
         case DELETE_ANIME:

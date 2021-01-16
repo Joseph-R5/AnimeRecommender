@@ -113,8 +113,8 @@ class ConnectedSearchBar extends Component {
 
 function mapStateToProps(state) {
     return {
-        query: state.rootReducer.query,
-        autoCompleteList: state.rootReducer.autoCompleteList,
+        query: state.search.query,
+        autoCompleteList: state.search.autoCompleteList,
         animeList: state.rootReducer.animeList,
         showErrorMsg: state.errorHandler.showErrorMsg,
         errorResponse: state.errorHandler.errorResponse

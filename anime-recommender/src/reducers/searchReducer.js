@@ -20,14 +20,12 @@ export default function search(state = initialState, action) {
             return {
                 ...state,
                 autoCompleteList: action.json.results,
-                autoCompleteLoading: false
             }
         case CLEAR_AUTO_COMPLETE_SUGGESTION:
             return {
                 ...state,
                 autoCompleteList: [],
                 query: "",
-                autoCompleteLoading: false
             }
         default:
             return state;
