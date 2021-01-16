@@ -91,7 +91,7 @@ const SideMenu = (props) => {
 
 function mapStateToProps(state) {
     return {
-        mobileOpen: state.mobileOpen
+        mobileOpen: state.rootReducer.mobileOpen
     }
 }
 

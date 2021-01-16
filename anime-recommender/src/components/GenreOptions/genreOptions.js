@@ -53,7 +53,7 @@ const GenreOptions = (props) => {
 
 function mapStateToProps(state) {
     return {
-        filterGenreOptions: state.filterGenreOptions
+        filterGenreOptions: state.rootReducer.filterGenreOptions
     }
 }
 

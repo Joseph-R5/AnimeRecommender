@@ -13,10 +13,6 @@ import {
   TOGGLE_MODAL,
   LOAD_SPINNER,
   CLEAR_RECOMMENDATIONS,
-  FIND_MOVIE_RECOMMENDATIONS,
-  FIND_TV_RECOMMENDATIONS,
-  FIND_ONA_RECOMMENDATIONS,
-  FIND_OVA_RECOMMENDATIONS,
   CHANGE_TV_INDEX,
   CHANGE_ONA_INDEX,
   CHANGE_OVA_INDEX,
@@ -25,16 +21,14 @@ import {
 } from "../constants/action-types";
 
 import filteredListData from "../data/filteredListData";
+import { combineReducers } from 'redux';
+import recommendations from "./recommendationsReducer";
 
 const initialState = {
   animeList: [],
   autoCompleteList: [],
   animeTitleList: [],
   filterGenreOptions: [],
-  movieRecommendations: [],
-  tvRecommendations: [],
-  ovaRecommendations: [],
-  onaRecommendations: [],
   query: "",
   errorResponse: "",
   showErrorMsg: false,
@@ -147,26 +141,6 @@ function rootReducer(state = initialState, action) {
         ...state,
         recommendationList: []
       }
-    case FIND_MOVIE_RECOMMENDATIONS:
-      return {
-        ...state,
-        movieRecommendations: action.movieResults
-      }
-    case FIND_TV_RECOMMENDATIONS:
-      return {
-        ...state,
-        tvRecommendations: action.tvResults
-      }
-    case FIND_ONA_RECOMMENDATIONS:
-      return {
-        ...state,
-        onaRecommendations: action.onaResults
-      }
-    case FIND_OVA_RECOMMENDATIONS:
-      return {
-        ...state,
-        ovaRecommendations: action.ovaResults
-      }
     case CHANGE_TV_INDEX:
       return {
         ...state,
@@ -199,4 +173,10 @@ function rootReducer(state = initialState, action) {
   return state;
 }
 
-export default rootReducer;
+const reducer = combineReducers({
+  rootReducer,
+  recommendations
+})
+
+// export default rootReducer;
+export default reducer;
