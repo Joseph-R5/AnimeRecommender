@@ -6,7 +6,7 @@ const initialState = {
     mobileOpen: false,
 }
 
-export default function mobile(state = initialState, action) {
+export default function mobileReducer(state = initialState, action) {
     switch (action.type) {
         case SET_MOBILE_OPEN:
             return {

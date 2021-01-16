@@ -111,8 +111,8 @@ const Modal = (props) => {
 
 function mapStateToProps(state) {
     return {
-        showModal: state.rootReducer.showModal,
-        recommendedAnime: state.rootReducer.recommendedAnime
+        showModal: state.modalReducer.showModal,
+        recommendedAnime: state.modalReducer.recommendedAnime
     }
 }
 
