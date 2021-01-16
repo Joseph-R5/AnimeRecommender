@@ -111,14 +111,14 @@ class RecommendationAnimeList extends Component {
 
 function mapStateToProps(state) {
     return {
-        animeTitleList: state.rootReducer.animeTitleList,
+        animeTitleList: state.animeListReducer.animeTitleList,
         filterOptions: state.filters.filterOptions,
         filterGenreOptions: state.genres.filterGenreOptions,
         showErrorMsg: state.errorHandler.showErrorMsg,
         errorResponse: state.errorHandler.errorResponse,
         showModal: state.modalReducer.showModal,
-        isLoading: state.rootReducer.isLoading,
-        recommendedIndex: state.rootReducer.recommendedIndex,
+        isLoading: state.loader.isLoading,
+        recommendedIndex: state.animeListReducer.recommendedIndex,
         movieRecommendations: state.recommendations.movieRecommendations,
         tvRecommendations: state.recommendations.tvRecommendations,
         ovaRecommendations: state.recommendations.ovaRecommendations,

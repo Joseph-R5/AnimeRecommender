@@ -86,7 +86,7 @@ const RecommendedAnimes = (props) => {
 function mapStateToProps(state) {
     return {
         showModal: state.modalReducer.showModal,
-        isLoading: state.rootReducer.isLoading
+        isLoading: state.loader.isLoading
     };
 }
 

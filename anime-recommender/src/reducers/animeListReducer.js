@@ -5,8 +5,7 @@ import {
 
 const initialState = {
     animeList: [],
-    animeTitleList: [],
-    isLoading: false
+    animeTitleList: []
 };
 
 export default function animeListReducer(state = initialState, action) {

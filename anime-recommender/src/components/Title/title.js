@@ -43,7 +43,7 @@ const Title = (props) => {
 function mapStateToProps(state) {
     return {
         mobileOpen: state.mobileReducer.mobileOpen,
-        animeTitleList: state.rootReducer.animeTitleList
+        animeTitleList: state.animeListReducer.animeTitleList
     }
 }
 
