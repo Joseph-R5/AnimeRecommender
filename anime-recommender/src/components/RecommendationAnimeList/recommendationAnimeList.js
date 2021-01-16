@@ -111,23 +111,23 @@ class RecommendationAnimeList extends Component {
 
 function mapStateToProps(state) {
     return {
-        recommendationList: state.recommendationList,
-        animeTitleList: state.animeTitleList,
-        filterOptions: state.filterOptions,
-        filterGenreOptions: state.filterGenreOptions,
-        showErrorMsg: state.showErrorMsg,
-        errorResponse: state.errorResponse,
-        showModal: state.showModal,
-        isLoading: state.isLoading,
-        recommendedIndex: state.recommendedIndex,
-        movieRecommendations: state.movieRecommendations,
-        tvRecommendations: state.tvRecommendations,
-        ovaRecommendations: state.ovaRecommendations,
-        onaRecommendations: state.onaRecommendations,
-        tvRecommendationIndex: state.tvRecommendationIndex,
-        movieRecommendationIndex: state.movieRecommendationIndex,
-        ovaRecommendationIndex: state.ovaRecommendationIndex,
-        onaRecommendationIndex: state.onaRecommendationIndex
+        recommendationList: state.rootReducer.recommendationList,
+        animeTitleList: state.rootReducer.animeTitleList,
+        filterOptions: state.rootReducer.filterOptions,
+        filterGenreOptions: state.rootReducer.filterGenreOptions,
+        showErrorMsg: state.rootReducer.showErrorMsg,
+        errorResponse: state.rootReducer.errorResponse,
+        showModal: state.rootReducer.showModal,
+        isLoading: state.rootReducer.isLoading,
+        recommendedIndex: state.rootReducer.recommendedIndex,
+        movieRecommendations: state.recommendations.movieRecommendations,
+        tvRecommendations: state.recommendations.tvRecommendations,
+        ovaRecommendations: state.recommendations.ovaRecommendations,
+        onaRecommendations: state.recommendations.onaRecommendations,
+        tvRecommendationIndex: state.paginations.tvRecommendationIndex,
+        movieRecommendationIndex: state.paginations.movieRecommendationIndex,
+        ovaRecommendationIndex: state.paginations.ovaRecommendationIndex,
+        onaRecommendationIndex: state.paginations.onaRecommendationIndex
     };
 }
 

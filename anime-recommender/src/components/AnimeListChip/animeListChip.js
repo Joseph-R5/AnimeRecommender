@@ -50,7 +50,7 @@ const AnimeListChip = (props) => {
 
 function mapStateToProps(state) {
     return {
-        animeTitleList: state.animeTitleList,
+        animeTitleList: state.rootReducer.animeTitleList,
     };
 }
 

@@ -13,10 +13,6 @@ import {
   TOGGLE_MODAL,
   LOAD_SPINNER,
   CLEAR_RECOMMENDATIONS,
-  FIND_MOVIE_RECOMMENDATIONS,
-  FIND_TV_RECOMMENDATIONS,
-  FIND_ONA_RECOMMENDATIONS,
-  FIND_OVA_RECOMMENDATIONS,
   CHANGE_TV_INDEX,
   CHANGE_ONA_INDEX,
   CHANGE_OVA_INDEX,
@@ -25,26 +21,21 @@ import {
 } from "../constants/action-types";
 
 import filteredListData from "../data/filteredListData";
+import { combineReducers } from 'redux';
+import recommendations from "./recommendationsReducer";
+import paginations from "./paginationReducer";
 
 const initialState = {
   animeList: [],
   autoCompleteList: [],
   animeTitleList: [],
   filterGenreOptions: [],
-  movieRecommendations: [],
-  tvRecommendations: [],
-  ovaRecommendations: [],
-  onaRecommendations: [],
   query: "",
   errorResponse: "",
   showErrorMsg: false,
   showModal: false,
   isLoading: false,
   autoCompleteLoading: false,
-  movieRecommendationIndex: 0,
-  tvRecommendationIndex: 0,
-  ovaRecommendationIndex: 0,
-  onaRecommendationIndex: 0,
   filterOptions: filteredListData,
   mobileOpen: false
 };
@@ -147,46 +138,6 @@ function rootReducer(state = initialState, action) {
         ...state,
         recommendationList: []
       }
-    case FIND_MOVIE_RECOMMENDATIONS:
-      return {
-        ...state,
-        movieRecommendations: action.movieResults
-      }
-    case FIND_TV_RECOMMENDATIONS:
-      return {
-        ...state,
-        tvRecommendations: action.tvResults
-      }
-    case FIND_ONA_RECOMMENDATIONS:
-      return {
-        ...state,
-        onaRecommendations: action.onaResults
-      }
-    case FIND_OVA_RECOMMENDATIONS:
-      return {
-        ...state,
-        ovaRecommendations: action.ovaResults
-      }
-    case CHANGE_TV_INDEX:
-      return {
-        ...state,
-        tvRecommendationIndex: action.newCurrentIndex
-      }
-    case CHANGE_MOVIE_INDEX:
-      return {
-        ...state,
-        movieRecommendationIndex: action.newCurrentIndex
-      }
-    case CHANGE_ONA_INDEX:
-      return {
-        ...state,
-        onaRecommendationIndex: action.newCurrentIndex
-      }
-    case CHANGE_OVA_INDEX:
-      return {
-        ...state,
-        ovaRecommendationIndex: action.newCurrentIndex
-      }
     case SET_MOBILE_OPEN:
       return {
         ...state,
@@ -199,4 +150,10 @@ function rootReducer(state = initialState, action) {
   return state;
 }
 
-export default rootReducer;
+const reducer = combineReducers({
+  rootReducer,
+  recommendations,
+  paginations
+})
+
+export default reducer;

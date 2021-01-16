@@ -16,7 +16,7 @@ export const checkIfAnimeAlreadyExistsMiddleware = store => next => action => {
   switch (action.type) {
     case ADD_ANIME:
       const animeTitleSearch = action.animeResults.title
-      const animeTitleList = store.getState().animeTitleList;
+      const animeTitleList = store.getState().rootReducer.animeTitleList;
 
       if (animeTitleList.includes(animeTitleSearch)) {
         const payload = ANIME_ALREADY_EXISTS

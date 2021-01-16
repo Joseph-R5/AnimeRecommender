@@ -55,7 +55,7 @@ class ErrorMessageHandler extends Component {
 
 function mapStateToProps(state) {
     return {
-        showErrorMsg: state.showErrorMsg
+        showErrorMsg: state.rootReducer.showErrorMsg
     };
 }
 

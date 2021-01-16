@@ -45,7 +45,7 @@ const FilterOptions = (props) => {
 
 function mapStateToProps(state) {
     return {
-        filterOptions: state.filterOptions
+        filterOptions: state.rootReducer.filterOptions
     }
 }
 
