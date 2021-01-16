@@ -18,6 +18,8 @@ import recommendations from "./recommendationsReducer";
 import paginations from "./paginationReducer";
 import genres from "./genreReducer";
 import errorHandler from "./errorHandlerReducer";
+import loader from "./loaderReducer";
+import mobileReducer from "./mobileReducer";
 
 const initialState = {
   animeList: [],
@@ -30,7 +32,6 @@ const initialState = {
   isLoading: false,
   autoCompleteLoading: false,
   filterOptions: filteredListData,
-  mobileOpen: false
 };
 
 function rootReducer(state = initialState, action) {
@@ -105,11 +106,6 @@ function rootReducer(state = initialState, action) {
         ...state,
         recommendationList: []
       }
-    case SET_MOBILE_OPEN:
-      return {
-        ...state,
-        mobileOpen: action.payload
-      }
     default:
       break;
   }
@@ -122,7 +118,8 @@ const reducer = combineReducers({
   recommendations,
   paginations,
   genres,
-  errorHandler
+  errorHandler,
+  mobileReducer
 })
 
 export default reducer;
