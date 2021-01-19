@@ -1,11 +1,13 @@
 import {
-    TOGGLE_FILTER_BUTTON
+    TOGGLE_FILTER_BUTTON,
+    LOAD_FILTER_SPINNER
 } from "../constants/action-types";
 
 import filteredListData from "../data/filteredListData";
 
 const initialState = {
-    filterOptions: filteredListData
+    filterOptions: filteredListData,
+    loadingFilter: false
 }
 
 export default function filters(state = initialState, action) {
@@ -16,7 +18,13 @@ export default function filters(state = initialState, action) {
             tempFilterOptions[index].enabled = !tempFilterOptions[index].enabled
             return {
                 ...state,
-                filterOptions: [...state.filterOptions]
+                filterOptions: [...state.filterOptions],
+                loadingFilter: false
+            }
+        case LOAD_FILTER_SPINNER:
+            return {
+                ...state,
+                loadingFilter: true
             }
         default:
             return state;

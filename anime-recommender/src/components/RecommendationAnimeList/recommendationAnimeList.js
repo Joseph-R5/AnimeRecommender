@@ -46,13 +46,14 @@ class RecommendationAnimeList extends Component {
 
     render() {
         const {
-            movieRecommendations, tvRecommendations, ovaRecommendations,
-            onaRecommendations, showModal, isLoading,
+            movieRecommendations, tvRecommendations, 
+            onaRecommendations, showModal, loadingAnimeList,
             tvRecommendationIndex, movieRecommendationIndex, onaRecommendationIndex,
-            ovaRecommendationIndex, showMobileView
+            showMobileView, loadingModal, loadingFilter
         } = this.props;
 
         const size = showMobileView ? 12 : 10;
+        const showLoader = loadingAnimeList || loadingModal || loadingFilter;
 
         if (movieRecommendations.length > 0) {
             return (
@@ -74,7 +75,7 @@ class RecommendationAnimeList extends Component {
                                     height: '100%',
                                     paddingBottom: '21px',
                                 }}>
-                                {isLoading ? <Spinner /> : null}
+                                {showLoader ? <Spinner /> : null}
                                 <DynamicRecommendationsList
                                     section={TV}
                                     animeList={tvRecommendations}
@@ -101,7 +102,7 @@ class RecommendationAnimeList extends Component {
                     {showModal && <Modal />}
                 </div>
             )
-        } else if (isLoading) {
+        } else if (showLoader) {
             return (<Spinner />)
         } else {
             return (null)
@@ -117,7 +118,11 @@ function mapStateToProps(state) {
         showErrorMsg: state.errorHandler.showErrorMsg,
         errorResponse: state.errorHandler.errorResponse,
         showModal: state.modalReducer.showModal,
-        isLoading: state.loader.isLoading,
+
+        loadingAnimeList: state.animeListReducer.loadingAnimeList,
+        loadingModal: state.modalReducer.loadingModal,
+        loadingFilter: state.filters.loadingFilter,
+
         recommendedIndex: state.animeListReducer.recommendedIndex,
         movieRecommendations: state.recommendations.movieRecommendations,
         tvRecommendations: state.recommendations.tvRecommendations,
@@ -151,5 +156,5 @@ RecommendationAnimeList.propTypes = {
 export default
     withHooksHOC(
         connect(mapStateToProps, mapDispatchToProps)
-        (RecommendationAnimeList)
+            (RecommendationAnimeList)
     );

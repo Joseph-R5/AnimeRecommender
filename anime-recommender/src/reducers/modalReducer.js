@@ -1,10 +1,12 @@
 import {
-    TOGGLE_MODAL
+    TOGGLE_MODAL,
+    LOAD_MODAL_SPINNER
 } from "../constants/action-types";
 
 const initialState = {
     showModal: false,
-    recommendedAnime: []
+    recommendedAnime: [],
+    loadingModal: false
 }
 
 export default function modalReducer(state = initialState, action) {
@@ -14,6 +16,12 @@ export default function modalReducer(state = initialState, action) {
                 ...state,
                 showModal: !action.toggle,
                 recommendedAnime: action.json,
+                loadingModal: false,
+            }
+        case LOAD_MODAL_SPINNER:
+            return {
+                ...state,
+                loadingModal: true
             }
         default:
             return state;

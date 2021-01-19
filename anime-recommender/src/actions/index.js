@@ -16,7 +16,10 @@ import {
   FIND_OVA_RECOMMENDATIONS,
   FIND_ONA_RECOMMENDATIONS,
   SET_MOBILE_OPEN,
-  LOAD_ERROR_MSG
+  LOAD_ERROR_MSG,
+  LOAD_ANIME_LIST_SPINNER,
+  LOAD_MODAL_SPINNER,
+  LOAD_FILTER_SPINNER
 } from "../constants/action-types";
 
 import {
@@ -49,6 +52,20 @@ export function loadSpinner(bool) {
   return { type: LOAD_SPINNER, bool }
 }
 
+// TODO
+// Do a switch check for with type to return 
+
+export function loadAnimeListSpinner(bool) {
+  return { type: LOAD_ANIME_LIST_SPINNER, bool }
+}
+
+export function loadModalSpinner(bool) {
+  return { type: LOAD_MODAL_SPINNER, bool }
+}
+
+export function loadFilterSpinner(bool) {
+  return { type: LOAD_FILTER_SPINNER, bool }
+}
 
 export function autoCompleteSearchBar(payload) {
   return function (dispatch) {
@@ -63,10 +80,6 @@ export function autoCompleteSearchBar(payload) {
 export function clearAutoCompleteSuggestions(payload) {
   return { type: CLEAR_AUTO_COMPLETE_SUGGESTION, payload }
 };
-
-export function changeCurrentIndex(payload) {
-  return { type: CHANGE_CURRENT_INDEX, payload }
-}
 
 export function getRecommendationlist(animeTitleList, filterOptions, filterGenreOptions) {
 
