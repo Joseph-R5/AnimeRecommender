@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import "./genreOptions.css";
 
 import { updateGenreList, loadSpinner } from "../../actions/index";
+import { LOAD_GENRE_SPINNER } from '../../constants/action-types';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -27,6 +28,7 @@ const CssTextField = withStyles({
 
 const GenreOptions = (props) => {
     const classes = useStyles();
+    const { updateGenreList, loadSpinner } = props;
 
     return (
         <div className={classes.root}>
@@ -36,8 +38,8 @@ const GenreOptions = (props) => {
                 options={genreList}
                 getOptionLabel={(option) => option.title}
                 onChange={(event, values) => {
-                    props.loadSpinner(true)
-                    props.updateGenreList(values, false)
+                    loadSpinner(LOAD_GENRE_SPINNER)
+                    updateGenreList(values, false)
                 }}
                 renderInput={(params) => (
                     <CssTextField
@@ -60,7 +62,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         updateGenreList: (genreList) => dispatch(updateGenreList(genreList)),
-        loadSpinner: (bool) => dispatch(loadSpinner(bool))
+        loadSpinner: (type) => dispatch(loadSpinner(type))
     };
 }
 

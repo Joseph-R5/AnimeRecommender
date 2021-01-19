@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import './filterOptions.css';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { toggleFilterButton, loadFilterSpinner } from "../../actions/index";
+import { toggleFilterButton, loadSpinner } from "../../actions/index";
+import { LOAD_FILTER_SPINNER } from '../../constants/action-types';
 
 const FilterOptions = (props) => {
-    const { filterOptions, toggleFilterButton, loadFilterSpinner } = props;
+    const { filterOptions, toggleFilterButton, loadSpinner } = props;
 
     return (
         <div className="filterOptionsContainer">
@@ -19,7 +20,7 @@ const FilterOptions = (props) => {
                                     <Checkbox
                                         checked={option.enabled}
                                         onClick={() => {
-                                            loadFilterSpinner(true)
+                                            loadSpinner(LOAD_FILTER_SPINNER)
                                             toggleFilterButton(option)
                                         }}
                                         name={option.title}
@@ -35,7 +36,6 @@ const FilterOptions = (props) => {
                             />
                         </li>
                     }
-
                     return null;
                 })}
             </ul>
@@ -52,7 +52,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         toggleFilterButton: (option) => dispatch(toggleFilterButton(option)),
-        loadFilterSpinner: (bool) => dispatch(loadFilterSpinner(bool))
+        loadSpinner: (type) => dispatch(loadSpinner(type))
     }
 }
 

@@ -46,14 +46,16 @@ class RecommendationAnimeList extends Component {
 
     render() {
         const {
-            movieRecommendations, tvRecommendations, 
+            movieRecommendations, tvRecommendations,
             onaRecommendations, showModal, loadingAnimeList,
             tvRecommendationIndex, movieRecommendationIndex, onaRecommendationIndex,
-            showMobileView, loadingModal, loadingFilter
+            showMobileView, loadingModal, loadingFilter, loadingGenre
         } = this.props;
 
         const size = showMobileView ? 12 : 10;
-        const showLoader = loadingAnimeList || loadingModal || loadingFilter;
+        const showLoader =
+            loadingAnimeList || loadingModal
+            || loadingFilter || loadingGenre;
 
         if (movieRecommendations.length > 0) {
             return (
@@ -122,6 +124,7 @@ function mapStateToProps(state) {
         loadingAnimeList: state.animeListReducer.loadingAnimeList,
         loadingModal: state.modalReducer.loadingModal,
         loadingFilter: state.filters.loadingFilter,
+        loadingGenre: state.genres.loadingGenre,
 
         recommendedIndex: state.animeListReducer.recommendedIndex,
         movieRecommendations: state.recommendations.movieRecommendations,
