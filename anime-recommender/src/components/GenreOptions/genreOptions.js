@@ -38,7 +38,7 @@ const GenreOptions = (props) => {
                 options={genreList}
                 getOptionLabel={(option) => option.title}
                 onChange={(event, values) => {
-                    loadSpinner(LOAD_GENRE_SPINNER)
+                    loadSpinner(LOAD_GENRE_SPINNER, true)
                     updateGenreList(values, false)
                 }}
                 renderInput={(params) => (
@@ -62,7 +62,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         updateGenreList: (genreList) => dispatch(updateGenreList(genreList)),
-        loadSpinner: (type) => dispatch(loadSpinner(type))
+        loadSpinner: (type, bool) => dispatch(loadSpinner(type, bool))
     };
 }
 

@@ -27,7 +27,7 @@ export default function genres(state = initialState, action) {
         case LOAD_GENRE_SPINNER:
             return {
                 ...state,
-                loadingGenre: true
+                loadingGenre: action.bool
             }
         default:
             return state;

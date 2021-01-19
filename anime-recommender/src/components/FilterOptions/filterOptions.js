@@ -20,7 +20,7 @@ const FilterOptions = (props) => {
                                     <Checkbox
                                         checked={option.enabled}
                                         onClick={() => {
-                                            loadSpinner(LOAD_FILTER_SPINNER)
+                                            loadSpinner(LOAD_FILTER_SPINNER, true)
                                             toggleFilterButton(option)
                                         }}
                                         name={option.title}
@@ -52,7 +52,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         toggleFilterButton: (option) => dispatch(toggleFilterButton(option)),
-        loadSpinner: (type) => dispatch(loadSpinner(type))
+        loadSpinner: (type, bool) => dispatch(loadSpinner(type, bool))
     }
 }
 

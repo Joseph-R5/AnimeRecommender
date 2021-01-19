@@ -48,7 +48,7 @@ const RecommendedAnimes = (props) => {
                                 <CardMedia
                                     style={{ height: 300, width: 200 }}
                                     onClick={() => {
-                                        loadSpinner(LOAD_MODAL_SPINNER);
+                                        loadSpinner(LOAD_MODAL_SPINNER, true);
                                         toggleModal(showModal, el);
                                     }}
                                     image={el.image_url}
@@ -88,7 +88,7 @@ function mapDispatchToProps(dispatch) {
         toggleModal: (toggle, anime) => dispatch(toggleModal(toggle, anime)),
         increaseRecommendedIndex: (index, length, section) => dispatch(increaseRecommendedIndex(index, length, section)),
         decreaseRecommendedIndex: (index, section) => dispatch(decreaseRecommendedIndex(index, section)),
-        loadSpinner: (type) => dispatch(loadSpinner(type))
+        loadSpinner: (type, bool) => dispatch(loadSpinner(type, bool))
     }
 }
 
