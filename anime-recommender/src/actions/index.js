@@ -3,7 +3,6 @@ import {
   AUTO_COMPLETE_SUGGESTION,
   CLEAR_AUTO_COMPLETE_SUGGESTION,
   UPDATE_QUERY,
-  CHANGE_CURRENT_INDEX,
   DELETE_ANIME,
   CLOSE_ERROR_MSG,
   TOGGLE_FILTER_BUTTON,
@@ -13,13 +12,13 @@ import {
   CLEAR_RECOMMENDATIONS,
   FIND_MOVIE_RECOMMENDATIONS,
   FIND_TV_RECOMMENDATIONS,
-  FIND_OVA_RECOMMENDATIONS,
   FIND_ONA_RECOMMENDATIONS,
   SET_MOBILE_OPEN,
   LOAD_ERROR_MSG,
   LOAD_ANIME_LIST_SPINNER,
   LOAD_MODAL_SPINNER,
-  LOAD_FILTER_SPINNER
+  LOAD_FILTER_SPINNER,
+  LOAD_GENRE_SPINNER
 } from "../constants/action-types";
 
 import {
@@ -48,13 +47,6 @@ export function addAnime(payload) {
   }
 }
 
-export function loadSpinner(bool) {
-  return { type: LOAD_SPINNER, bool }
-}
-
-// TODO
-// Do a switch check for with type to return 
-
 export function loadAnimeListSpinner(bool) {
   return { type: LOAD_ANIME_LIST_SPINNER, bool }
 }
@@ -65,6 +57,14 @@ export function loadModalSpinner(bool) {
 
 export function loadFilterSpinner(bool) {
   return { type: LOAD_FILTER_SPINNER, bool }
+}
+
+// export function loadGenreSpinner() {
+//   return { type: LOAD_GENRE_SPINNER }
+// }
+
+export function loadSpinner(reducerType) {
+  return { type: reducerType }
 }
 
 export function autoCompleteSearchBar(payload) {

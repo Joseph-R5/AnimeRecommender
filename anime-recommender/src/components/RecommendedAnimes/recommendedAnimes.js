@@ -7,13 +7,14 @@ import CardMedia from '@material-ui/core/CardMedia';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import 'fontsource-roboto';
-import { toggleModal, increaseRecommendedIndex, decreaseRecommendedIndex, loadModalSpinner } from "../../actions/index";
+import { toggleModal, increaseRecommendedIndex, decreaseRecommendedIndex, loadSpinner } from "../../actions/index";
 import { animeRecommendationListSlicer, showArrowNext, showArrowBack } from "../../util/utils";
+import { LOAD_MODAL_SPINNER } from "../../constants/action-types";
 
 const RecommendedAnimes = (props) => {
     const {
         list, index, showModal,
-        toggleModal, loadModalSpinner,
+        toggleModal, loadSpinner,
         section, increaseRecommendedIndex, decreaseRecommendedIndex,
     } = props;
 
@@ -47,7 +48,7 @@ const RecommendedAnimes = (props) => {
                                 <CardMedia
                                     style={{ height: 300, width: 200 }}
                                     onClick={() => {
-                                        loadModalSpinner(true);
+                                        loadSpinner(LOAD_MODAL_SPINNER);
                                         toggleModal(showModal, el);
                                     }}
                                     image={el.image_url}
@@ -87,7 +88,7 @@ function mapDispatchToProps(dispatch) {
         toggleModal: (toggle, anime) => dispatch(toggleModal(toggle, anime)),
         increaseRecommendedIndex: (index, length, section) => dispatch(increaseRecommendedIndex(index, length, section)),
         decreaseRecommendedIndex: (index, section) => dispatch(decreaseRecommendedIndex(index, section)),
-        loadModalSpinner: (bool) => dispatch(loadModalSpinner(bool))
+        loadSpinner: (type) => dispatch(loadSpinner(type))
     }
 }
 
