@@ -13,6 +13,7 @@ import {
     updateQuery,
     addAnime,
     loadSpinner,
+    loadAnimeListSpinner
 } from "../../actions/index";
 
 const CssTextField = withStyles({
@@ -69,22 +70,15 @@ class ConnectedSearchBar extends Component {
         this.setState({
             text: ""
         }, () => {
-            this.handlePromise(anime).then(() => {
-                setTimeout(() => {
-                    this.props.loadSpinner(false)
-                }, 1000);
-            })
+            this.handlePromise(anime);
         })
     }
 
     handlePromise(anime) {
-        const { loadSpinner, addAnime } = this.props;
+        const { addAnime, loadAnimeListSpinner } = this.props;
 
-        return new Promise((resolve, reject) => {
-            loadSpinner(true);
-            addAnime(anime);
-            resolve();
-        })
+        loadAnimeListSpinner(true);
+        addAnime(anime);
     }
 
     render() {
@@ -134,7 +128,8 @@ function mapDispatchToProps(dispatch) {
         clearAutoCompleteSuggestions: () => dispatch(clearAutoCompleteSuggestions()),
         updateQuery: query => dispatch(updateQuery(query)),
         addAnime: anime => dispatch(addAnime(anime)),
-        loadSpinner: bool => dispatch(loadSpinner(bool))
+        loadSpinner: bool => dispatch(loadSpinner(bool)),
+        loadAnimeListSpinner: bool => dispatch(loadAnimeListSpinner(bool))
     };
 }
 

@@ -1,11 +1,13 @@
 import {
     ADD_ANIME,
     DELETE_ANIME,
+    LOAD_ANIME_LIST_SPINNER
 } from "../constants/action-types";
 
 const initialState = {
     animeList: [],
-    animeTitleList: []
+    animeTitleList: [],
+    loadingAnimeList: false
 };
 
 export default function animeListReducer(state = initialState, action) {
@@ -16,7 +18,7 @@ export default function animeListReducer(state = initialState, action) {
                 query: "",
                 animeList: state.animeList.concat(action.animeResults),
                 animeTitleList: [...state.animeTitleList, action.animeResults.title],
-                isLoading: false
+                loadingAnimeList: false
             }
         case DELETE_ANIME:
             return {
@@ -29,6 +31,11 @@ export default function animeListReducer(state = initialState, action) {
                     ...state.animeTitleList.slice(0, action.payload),
                     ...state.animeTitleList.slice(action.payload + 1)
                 ]
+            }
+        case LOAD_ANIME_LIST_SPINNER:
+            return {
+                ...state,
+                loadingAnimeList: true
             }
         default:
             return state;

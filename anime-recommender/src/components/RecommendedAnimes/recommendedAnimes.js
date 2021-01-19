@@ -7,23 +7,17 @@ import CardMedia from '@material-ui/core/CardMedia';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import 'fontsource-roboto';
-import { loadSpinner, toggleModal, increaseRecommendedIndex, decreaseRecommendedIndex } from "../../actions/index";
+import { toggleModal, increaseRecommendedIndex, decreaseRecommendedIndex, loadModalSpinner } from "../../actions/index";
 import { animeRecommendationListSlicer, showArrowNext, showArrowBack } from "../../util/utils";
 
 const RecommendedAnimes = (props) => {
     const {
         list, index, showModal,
-        toggleModal, loadSpinner,
+        toggleModal, loadModalSpinner,
         section, increaseRecommendedIndex, decreaseRecommendedIndex,
     } = props;
 
     const slicedList = animeRecommendationListSlicer(index, list, false)
-
-    const toggleModalPromise = (showModal, el) => new Promise((resolve, reject) => {
-        loadSpinner(true);
-        toggleModal(showModal, el)
-        resolve();
-    })
 
     if (slicedList.length > 0) {
         return (
@@ -53,9 +47,8 @@ const RecommendedAnimes = (props) => {
                                 <CardMedia
                                     style={{ height: 300, width: 200 }}
                                     onClick={() => {
-                                        toggleModalPromise(showModal, el).then(() => {
-                                            setTimeout(() => { loadSpinner(false); }, 1000)
-                                        })
+                                        loadModalSpinner(true);
+                                        toggleModal(showModal, el);
                                     }}
                                     image={el.image_url}
                                 />
@@ -85,17 +78,16 @@ const RecommendedAnimes = (props) => {
 
 function mapStateToProps(state) {
     return {
-        showModal: state.modalReducer.showModal,
-        isLoading: state.loader.isLoading
+        showModal: state.modalReducer.showModal
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         toggleModal: (toggle, anime) => dispatch(toggleModal(toggle, anime)),
-        loadSpinner: (bool) => dispatch(loadSpinner(bool)),
         increaseRecommendedIndex: (index, length, section) => dispatch(increaseRecommendedIndex(index, length, section)),
-        decreaseRecommendedIndex: (index, section) => dispatch(decreaseRecommendedIndex(index, section))
+        decreaseRecommendedIndex: (index, section) => dispatch(decreaseRecommendedIndex(index, section)),
+        loadModalSpinner: (bool) => dispatch(loadModalSpinner(bool))
     }
 }
 
