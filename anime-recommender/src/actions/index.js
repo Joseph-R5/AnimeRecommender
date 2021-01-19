@@ -47,24 +47,8 @@ export function addAnime(payload) {
   }
 }
 
-export function loadAnimeListSpinner(bool) {
-  return { type: LOAD_ANIME_LIST_SPINNER, bool }
-}
-
-export function loadModalSpinner(bool) {
-  return { type: LOAD_MODAL_SPINNER, bool }
-}
-
-export function loadFilterSpinner(bool) {
-  return { type: LOAD_FILTER_SPINNER, bool }
-}
-
-// export function loadGenreSpinner() {
-//   return { type: LOAD_GENRE_SPINNER }
-// }
-
-export function loadSpinner(reducerType) {
-  return { type: reducerType }
+export function loadSpinner(reducerType, bool) {
+  return { type: reducerType, bool }
 }
 
 export function autoCompleteSearchBar(payload) {

@@ -21,7 +21,7 @@ export default function modalReducer(state = initialState, action) {
         case LOAD_MODAL_SPINNER:
             return {
                 ...state,
-                loadingModal: true
+                loadingModal: action.bool
             }
         default:
             return state;

@@ -24,7 +24,7 @@ export default function filters(state = initialState, action) {
         case LOAD_FILTER_SPINNER:
             return {
                 ...state,
-                loadingFilter: true
+                loadingFilter: action.bool
             }
         default:
             return state;

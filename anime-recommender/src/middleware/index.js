@@ -3,8 +3,8 @@ import {
   DELETE_ANIME,
   FIND_RECOMMENDATIONS,
   LOAD_ERROR_MSG,
-  LOAD_SPINNER,
-  NO_RECOMMENDATIONS_FOUND
+  NO_RECOMMENDATIONS_FOUND,
+  LOAD_ANIME_LIST_SPINNER
 } from "../constants/action-types";
 
 import {
@@ -16,12 +16,17 @@ import {
 export const checkIfAnimeAlreadyExistsMiddleware = store => next => action => {
   switch (action.type) {
     case ADD_ANIME:
+      // TODO
+      // Error handler here if no such exists (test with Anime: Moldiver)
       const animeTitleSearch = action.animeResults.title;
       const animeTitleList = store.getState().animeListReducer.animeTitleList;
 
       if (animeTitleList.includes(animeTitleSearch)) {
         const payload = ANIME_ALREADY_EXISTS
-        return next({type: LOAD_ERROR_MSG, payload})
+        const load = false;
+
+        next({ type: LOAD_ANIME_LIST_SPINNER, load })
+        return next({ type: LOAD_ERROR_MSG, payload })
       }
       break;
     case FIND_RECOMMENDATIONS:

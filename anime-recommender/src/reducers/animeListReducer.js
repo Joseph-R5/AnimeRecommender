@@ -35,7 +35,7 @@ export default function animeListReducer(state = initialState, action) {
         case LOAD_ANIME_LIST_SPINNER:
             return {
                 ...state,
-                loadingAnimeList: true
+                loadingAnimeList: action.bool
             }
         default:
             return state;

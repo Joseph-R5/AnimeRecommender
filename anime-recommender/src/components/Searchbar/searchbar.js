@@ -77,7 +77,7 @@ class ConnectedSearchBar extends Component {
     handlePromise(anime) {
         const { addAnime, loadSpinner } = this.props;
 
-        loadSpinner(LOAD_ANIME_LIST_SPINNER);
+        loadSpinner(LOAD_ANIME_LIST_SPINNER, true);
         addAnime(anime);
     }
 
@@ -128,7 +128,7 @@ function mapDispatchToProps(dispatch) {
         clearAutoCompleteSuggestions: () => dispatch(clearAutoCompleteSuggestions()),
         updateQuery: query => dispatch(updateQuery(query)),
         addAnime: anime => dispatch(addAnime(anime)),
-        loadSpinner: type => dispatch(loadSpinner(type))
+        loadSpinner: (type, bool) => dispatch(loadSpinner(type, bool))
     };
 }
 
