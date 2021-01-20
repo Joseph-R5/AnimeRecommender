@@ -1,6 +1,5 @@
 import { 
     CLEAR_RECOMMENDATIONS,
-    LOAD_ERROR_MSG,
     FIND_MOVIE_RECOMMENDATIONS,
     FIND_TV_RECOMMENDATIONS,
     FIND_ONA_RECOMMENDATIONS
@@ -13,12 +12,13 @@ import {
 
 import { FAILED_TO_FETCH_DATA } from "../../constants/error-messages";
 
+import { loadErrorMessage } from "../errorHandler";
+
 export function clearRecommendations() {
     return { type: CLEAR_RECOMMENDATIONS }
 }
 
 export function getRecommendationlist(animeTitleList, filterOptions, filterGenreOptions) {
-
     return function (dispatch) {
       Promise.all([
         fetch(constructRecommendationURL(animeTitleList, "movie", filterOptions, filterGenreOptions)),
@@ -38,7 +38,7 @@ export function getRecommendationlist(animeTitleList, filterOptions, filterGenre
           dispatch({ type: FIND_ONA_RECOMMENDATIONS, onaResults, animeTitleList })
         }).catch(error => {
           const errorMessage = FAILED_TO_FETCH_DATA;
-          dispatch({ type: LOAD_ERROR_MSG, errorMessage })
+          loadErrorMessage(dispatch, errorMessage)
         })
     }
   }

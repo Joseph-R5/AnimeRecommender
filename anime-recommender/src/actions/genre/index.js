@@ -3,6 +3,7 @@ import {
     LOAD_SPINNER
 } from "../../constants/action-types";
 
+//TODO fix
 export function updateGenreList(genreList, bool) {
     const updateGenreOptions = (genreList, dispatch) => new Promise((resolve, reject) => {
       dispatch({ type: UPDATE_GENRE_FILTER_LIST, genreList })
