@@ -1,156 +1,28 @@
-import {
-  ADD_ANIME,
-  AUTO_COMPLETE_SUGGESTION,
-  CLEAR_AUTO_COMPLETE_SUGGESTION,
-  UPDATE_QUERY,
-  DELETE_ANIME,
-  CLOSE_ERROR_MSG,
-  TOGGLE_FILTER_BUTTON,
-  UPDATE_GENRE_FILTER_LIST,
-  TOGGLE_MODAL,
-  LOAD_SPINNER,
-  CLEAR_RECOMMENDATIONS,
-  FIND_MOVIE_RECOMMENDATIONS,
-  FIND_TV_RECOMMENDATIONS,
-  FIND_ONA_RECOMMENDATIONS,
-  SET_MOBILE_OPEN,
-  LOAD_ERROR_MSG,
-  LOAD_ANIME_LIST_SPINNER,
-} from "../constants/action-types";
+import { toggleModal } from "./modal";
+import { setMobileOpen } from "./mobile";
+import { getRecommendationlist, clearRecommendations } from "./recommendations";
+import { increaseRecommendedIndex, decreaseRecommendedIndex } from "./pagination";
+import { loadSpinner } from "./loader";
+import { updateGenreList } from "./genre";
+import { toggleFilterButton } from "./filter";
+import { autoCompleteSearchBar, updateQuery, clearAutoCompleteSuggestions } from "./search";
+import { closeErrorMessage } from "./errorHandler";
+import { deleteAnimeFromList, addAnime } from "./animeList";
 
-import {
-  filterDuplicateRecommendedAnime,
-  increaseRecommendedIndexHelper,
-  decreaseRecommendedIndexHelper,
-  constructRecommendationURL,
-  getSectionIndexOption,
-  getExactAnimeFromAPI
-} from "../util/utils";
-
-import { FAILED_TO_FETCH_DATA, NO_DATA_EXISTS_FOR_GIVEN_ANIME } from "../constants/error-messages";
-
-export function updateQuery(payload) {
-  return { type: UPDATE_QUERY, payload }
-};
-
-export function addAnime(payload) {
-  return function (dispatch) {
-    return fetch("https://api.jikan.moe/v3/search/anime?q=" + payload)
-      .then(response => response.json())
-      .then(json => {
-        const animeResults = getExactAnimeFromAPI(payload, json.results)
-        const errorMessage = NO_DATA_EXISTS_FOR_GIVEN_ANIME;
-        const bool = false;
-
-        if (animeResults) {
-          dispatch({ type: ADD_ANIME, animeResults})
-        } else {
-          dispatch({ type: LOAD_ANIME_LIST_SPINNER, bool })
-          dispatch({ type: LOAD_ERROR_MSG, errorMessage})
-        }
-      })
-  }
-}
-
-export function loadSpinner(reducerType, bool) {
-  return { type: reducerType, bool }
-}
-
-export function autoCompleteSearchBar(payload) {
-  return function (dispatch) {
-    return fetch("https://api.jikan.moe/v3/search/anime?q=" + payload + "&limit=3")
-      .then(response => response.json())
-      .then(json => {
-        dispatch({ type: AUTO_COMPLETE_SUGGESTION, json })
-      })
-  }
-}
-
-export function clearAutoCompleteSuggestions(payload) {
-  return { type: CLEAR_AUTO_COMPLETE_SUGGESTION, payload }
-};
-
-export function getRecommendationlist(animeTitleList, filterOptions, filterGenreOptions) {
-
-  return function (dispatch) {
-    Promise.all([
-      fetch(constructRecommendationURL(animeTitleList, "movie", filterOptions, filterGenreOptions)),
-      fetch(constructRecommendationURL(animeTitleList, "tv", filterOptions, filterGenreOptions)),
-      fetch(constructRecommendationURL(animeTitleList, "ona", filterOptions, filterGenreOptions)),
-    ]).then(responses =>
-      Promise.all(responses.map(response => response.json())
-      )).then(responses => {
-        const [movieResponse, tvResponse, onaRepsonse] = responses;
-
-        const movieResults = filterDuplicateRecommendedAnime(animeTitleList, movieResponse.results)
-        const tvResults = filterDuplicateRecommendedAnime(animeTitleList, tvResponse.results)
-        const onaResults = filterDuplicateRecommendedAnime(animeTitleList, onaRepsonse.results)
-
-        dispatch({ type: FIND_MOVIE_RECOMMENDATIONS, movieResults, animeTitleList })
-        dispatch({ type: FIND_TV_RECOMMENDATIONS, tvResults, animeTitleList })
-        dispatch({ type: FIND_ONA_RECOMMENDATIONS, onaResults, animeTitleList })
-      }).catch(error => {
-        const errorMessage = FAILED_TO_FETCH_DATA;
-        dispatch({ type: LOAD_ERROR_MSG, errorMessage })
-      })
-  }
-}
-
-export function deleteAnimeFromList(payload) {
-  return { type: DELETE_ANIME, payload }
-}
-
-export function closeErrorMessage() {
-  return { type: CLOSE_ERROR_MSG }
-}
-
-export function increaseRecommendedIndex(index, recommendedListLength, section) {
-  const newCurrentIndex = increaseRecommendedIndexHelper(index, recommendedListLength)
-  const getSectionType = getSectionIndexOption(section);
-  return { type: getSectionType, newCurrentIndex }
-}
-
-export function decreaseRecommendedIndex(index, section) {
-  const newCurrentIndex = decreaseRecommendedIndexHelper(index)
-  const getSectionType = getSectionIndexOption(section)
-  return { type: getSectionType, newCurrentIndex }
-}
-
-export function toggleFilterButton(option) {
-  return { type: TOGGLE_FILTER_BUTTON, option }
-}
-
-export function updateGenreList(genreList, bool) {
-  const updateGenreOptions = (genreList, dispatch) => new Promise((resolve, reject) => {
-    dispatch({ type: UPDATE_GENRE_FILTER_LIST, genreList })
-    resolve();
-  })
-
-  return (dispatch) => {
-    updateGenreOptions(genreList, dispatch).then(() => {
-      dispatch({ type: LOAD_SPINNER, bool })
-    })
-  }
-}
-
-export function toggleModal(toggle, anime) {
-  if (anime) {
-    return function (dispatch) {
-      return fetch("https://api.jikan.moe/v3/search/anime?q=" + anime.title + "&limit=1")
-        .then(response => response.json())
-        .then(json => {
-          dispatch({ type: TOGGLE_MODAL, toggle, json })
-        })
-    }
-  } else {
-    return { type: TOGGLE_MODAL, toggle };
-  }
-}
-
-export function clearRecommendations() {
-  return { type: CLEAR_RECOMMENDATIONS }
-}
-
-export function setMobileOpen(payload) {
-  return { type: SET_MOBILE_OPEN, payload }
+export {
+  toggleModal,
+  setMobileOpen,
+  getRecommendationlist,
+  clearRecommendations,
+  increaseRecommendedIndex,
+  decreaseRecommendedIndex,
+  loadSpinner,
+  updateGenreList,
+  toggleFilterButton,
+  autoCompleteSearchBar, 
+  updateQuery, 
+  clearAutoCompleteSuggestions,
+  closeErrorMessage,
+  deleteAnimeFromList,
+  addAnime
 }
