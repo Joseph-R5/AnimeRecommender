@@ -17,6 +17,14 @@
 .recommendedAnimeItem {
     margin-left: 10px;
     margin-right: 10px;
+    transition: transform .2s;
+}
+
+.recommendedAnimeItem:hover {
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.1); 
+    cursor: pointer;
 }
 
 .recommendedAnimeSecionList li:hover {
@@ -35,8 +43,24 @@ h1 {
 
 .arrowRight {
     padding-left: 20px;
+    transition: transform .2s
 }
 
 .arrowLeft {
     padding-right: 20px;
+    transition: transform .2s
+}
+
+.arrowRight:hover {
+    -ms-transform: scale(1.15); /* IE 9 */
+    -webkit-transform: scale(1.15); /* Safari 3-8 */
+    transform: scale(1.15); 
+    cursor: pointer;
+}
+
+.arrowLeft:hover {
+    -ms-transform: scale(1.15); /* IE 9 */
+    -webkit-transform: scale(1.15); /* Safari 3-8 */
+    transform: scale(1.15); 
+    cursor: pointer;
 }
