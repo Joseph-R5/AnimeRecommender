@@ -30,7 +30,7 @@ import {
   getExactAnimeFromAPI
 } from "../util/utils";
 
-import { FAILED_TO_FETCH_DATA } from "../constants/error-messages";
+import { FAILED_TO_FETCH_DATA, NO_DATA_EXISTS_FOR_GIVEN_ANIME } from "../constants/error-messages";
 
 export function updateQuery(payload) {
   return { type: UPDATE_QUERY, payload }
@@ -42,7 +42,15 @@ export function addAnime(payload) {
       .then(response => response.json())
       .then(json => {
         const animeResults = getExactAnimeFromAPI(payload, json.results)
-        dispatch({ type: ADD_ANIME, animeResults })
+        const errorMessage = NO_DATA_EXISTS_FOR_GIVEN_ANIME;
+        const bool = false;
+
+        if (animeResults) {
+          dispatch({ type: ADD_ANIME, animeResults})
+        } else {
+          dispatch({ type: LOAD_ANIME_LIST_SPINNER, bool })
+          dispatch({ type: LOAD_ERROR_MSG, errorMessage})
+        }
       })
   }
 }
@@ -85,8 +93,8 @@ export function getRecommendationlist(animeTitleList, filterOptions, filterGenre
         dispatch({ type: FIND_TV_RECOMMENDATIONS, tvResults, animeTitleList })
         dispatch({ type: FIND_ONA_RECOMMENDATIONS, onaResults, animeTitleList })
       }).catch(error => {
-        const payload = FAILED_TO_FETCH_DATA;
-        dispatch({ type: LOAD_ERROR_MSG, payload })
+        const errorMessage = FAILED_TO_FETCH_DATA;
+        dispatch({ type: LOAD_ERROR_MSG, errorMessage })
       })
   }
 }
