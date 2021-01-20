@@ -3,7 +3,7 @@ import {
     FIND_TV_RECOMMENDATIONS,
     FIND_ONA_RECOMMENDATIONS,
     FIND_OVA_RECOMMENDATIONS
-} from "../constants/action-types";
+} from "../../constants/action-types";
 
 const initialState = {
   movieRecommendations: [],

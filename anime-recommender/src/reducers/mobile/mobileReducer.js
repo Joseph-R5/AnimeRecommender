@@ -1,6 +1,6 @@
 import {
     SET_MOBILE_OPEN
-} from "../constants/action-types";
+} from "../../constants/action-types";
 
 const initialState = {
     mobileOpen: false,

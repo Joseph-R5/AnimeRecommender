@@ -2,7 +2,7 @@ import {
     AUTO_COMPLETE_SUGGESTION,
     CLEAR_AUTO_COMPLETE_SUGGESTION,
     UPDATE_QUERY
-} from "../constants/action-types";
+} from "../../constants/action-types";
 
 const initialState = {
     autoCompleteList: [],

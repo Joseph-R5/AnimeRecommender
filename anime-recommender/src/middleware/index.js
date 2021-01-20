@@ -29,6 +29,9 @@ export const checkIfAnimeAlreadyExistsMiddleware = store => next => action => {
       break;
     case FIND_RECOMMENDATIONS:
       if (action.filteredAnimeRecommendationList.length === 0) {
+        const errorMessage = NO_ANIME_TO_RECOMMEND
+
+        next({ type: LOAD_ERROR_MSG, errorMessage })
         return next({ type: NO_RECOMMENDATIONS_FOUND, NO_ANIME_TO_RECOMMEND })
       }
       break;

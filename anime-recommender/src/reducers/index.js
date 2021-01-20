@@ -1,14 +1,14 @@
 import { combineReducers } from 'redux';
-import recommendations from "./recommendationsReducer";
-import paginations from "./paginationReducer";
-import genres from "./genreReducer";
-import errorHandler from "./errorHandlerReducer";
-import loader from "./loaderReducer";
-import mobileReducer from "./mobileReducer";
-import modalReducer from "./modalReducer";
-import search from "./searchReducer";
-import filters from "./filterReducer";
-import animeListReducer from "./animeListReducer";
+import recommendations from "./recommendations/recommendationsReducer";
+import paginations from "./pagination/paginationReducer";
+import genres from "./genre/genreReducer";
+import errorHandler from "./errorHandler/errorHandlerReducer";
+import loader from "./loader/loaderReducer";
+import mobileReducer from "./mobile/mobileReducer";
+import modalReducer from "./modal/modalReducer";
+import search from "./search/searchReducer";
+import filters from "./filter/filterReducer";
+import animeListReducer from "./animeList/animeListReducer";
 
 const reducer = combineReducers({
   recommendations,

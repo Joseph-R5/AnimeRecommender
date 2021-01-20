@@ -3,7 +3,7 @@ import {
     CHANGE_TV_INDEX,
     CHANGE_OVA_INDEX,
     CHANGE_ONA_INDEX
-} from "../constants/action-types";
+} from "../../constants/action-types";
 
 const initialState = {
   movieRecommendationIndex: 0,

@@ -1,9 +1,9 @@
 import {
     TOGGLE_FILTER_BUTTON,
     LOAD_FILTER_SPINNER
-} from "../constants/action-types";
+} from "../../constants/action-types";
 
-import filteredListData from "../data/filteredListData";
+import filteredListData from "../../data/filteredListData";
 
 const initialState = {
     filterOptions: filteredListData,

@@ -16,9 +16,6 @@ import {
   SET_MOBILE_OPEN,
   LOAD_ERROR_MSG,
   LOAD_ANIME_LIST_SPINNER,
-  LOAD_MODAL_SPINNER,
-  LOAD_FILTER_SPINNER,
-  LOAD_GENRE_SPINNER
 } from "../constants/action-types";
 
 import {

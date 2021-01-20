@@ -1,7 +1,7 @@
 import {
     TOGGLE_MODAL,
     LOAD_MODAL_SPINNER
-} from "../constants/action-types";
+} from "../../constants/action-types";
 
 const initialState = {
     showModal: false,

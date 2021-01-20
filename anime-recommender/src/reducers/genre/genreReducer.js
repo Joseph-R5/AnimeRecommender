@@ -2,7 +2,7 @@ import {
     UPDATE_GENRE_FILTER_LIST,
     NO_RECOMMENDATIONS_FOUND,
     LOAD_GENRE_SPINNER
-} from "../constants/action-types";
+} from "../../constants/action-types";
 
 const initialState = {
     filterGenreOptions: [],
@@ -21,8 +21,6 @@ export default function genres(state = initialState, action) {
             return {
                 ...state,
                 filterGenreOptions: [],
-                // showErrorMsg: true,
-                // errorResponse: action.payload
             }
         case LOAD_GENRE_SPINNER:
             return {
