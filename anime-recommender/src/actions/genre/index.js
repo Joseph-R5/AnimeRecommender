@@ -1,18 +1,9 @@
 import { 
-    UPDATE_GENRE_FILTER_LIST,
-    LOAD_SPINNER
+    UPDATE_GENRE_FILTER_LIST
 } from "../../constants/action-types";
 
-//TODO fix
-export function updateGenreList(genreList, bool) {
-    const updateGenreOptions = (genreList, dispatch) => new Promise((resolve, reject) => {
-      dispatch({ type: UPDATE_GENRE_FILTER_LIST, genreList })
-      resolve();
-    })
-  
+export function updateGenreList(genreList) {  
     return (dispatch) => {
-      updateGenreOptions(genreList, dispatch).then(() => {
-        dispatch({ type: LOAD_SPINNER, bool })
-      })
+      dispatch({ type: UPDATE_GENRE_FILTER_LIST, genreList })
     }
-  }
+  } 

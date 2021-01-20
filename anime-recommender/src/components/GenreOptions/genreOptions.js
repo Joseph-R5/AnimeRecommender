@@ -39,7 +39,7 @@ const GenreOptions = (props) => {
                 getOptionLabel={(option) => option.title}
                 onChange={(event, values) => {
                     loadSpinner(LOAD_GENRE_SPINNER, true)
-                    updateGenreList(values, false)
+                    updateGenreList(values)
                 }}
                 renderInput={(params) => (
                     <CssTextField
