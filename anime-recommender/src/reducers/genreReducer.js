@@ -21,8 +21,6 @@ export default function genres(state = initialState, action) {
             return {
                 ...state,
                 filterGenreOptions: [],
-                // showErrorMsg: true,
-                // errorResponse: action.payload
             }
         case LOAD_GENRE_SPINNER:
             return {
