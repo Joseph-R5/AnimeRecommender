@@ -1,7 +1,7 @@
 import {
     LOAD_ERROR_MSG,
     CLOSE_ERROR_MSG
-} from "../constants/action-types";
+} from "../../constants/action-types";
 
 const initialState = {
     errorResponse: "",

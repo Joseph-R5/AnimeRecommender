@@ -2,7 +2,7 @@ import {
     ADD_ANIME,
     DELETE_ANIME,
     LOAD_ANIME_LIST_SPINNER
-} from "../constants/action-types";
+} from "../../constants/action-types";
 
 const initialState = {
     animeList: [],

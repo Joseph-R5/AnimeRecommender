@@ -1,6 +1,6 @@
 import {
     LOAD_SPINNER
-} from "../constants/action-types";
+} from "../../constants/action-types";
 
 const initialState = {
     isLoading: false,
