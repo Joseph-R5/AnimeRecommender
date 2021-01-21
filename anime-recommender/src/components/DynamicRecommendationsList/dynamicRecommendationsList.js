@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import './dynamicRecommendationsList.css';
 import RecommendedAnimes from "../RecommendedAnimes/recommendedAnimes";
 import "./dynamicRecommendationsList.css";
-import { getPaginationPageCount, getActivePage, convertAcronym } from '../../util/utils';
+import { getPaginationPageCount, getActivePage, convertAcronym } from "../../util";
 
 const DynamicRecommendationsList = (props) => {
     const { section, animeList, index } = props;
     const paginationPageCount = getPaginationPageCount(animeList.length);
     const sectionHeader = convertAcronym(section);
-    
+
     if (animeList.length > 0) {
         return (
             <div>

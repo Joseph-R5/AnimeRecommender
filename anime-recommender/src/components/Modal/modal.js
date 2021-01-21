@@ -13,7 +13,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Slide from '@material-ui/core/Slide';
 import "./modal.css";
 import PropTypes from 'prop-types';
-import { calculateAverageAnimeWatchTime, numberFormatter, timestampConverter } from '../../util/utils';
+import { numberFormatter, timestampConverter, calculateAverageAnimeWatchTime } from "../../util";
 import { addAnime } from "../../actions/index";
 
 const Transition = React.forwardRef(function Transition(props, ref) {

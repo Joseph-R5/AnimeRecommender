@@ -7,7 +7,7 @@ import FilterOptions from "../FilterOptions/filterOptions";
 import GenreOptions from "../GenreOptions/genreOptions";
 import AnimeListChip from "../AnimeListChip/animeListChip";
 import { makeStyles } from "@material-ui/core/styles";
-import { calculateDrawerWidth, calculateScrollDrawerPosition } from "../../util/utils";
+import { calculateDrawerWidth, calculateScrollDrawerPosition } from "../../util/";
 import { setMobileOpen } from "../../actions/index";
 import useScrollbar from "../../hooks/useScrollbar";
 import "./sideMenu.css";
