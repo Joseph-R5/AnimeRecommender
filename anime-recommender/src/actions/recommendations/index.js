@@ -6,9 +6,10 @@ import {
 } from "../../constants/action-types"
 
 import {
-    constructRecommendationURL,
-    filterDuplicateRecommendedAnime
-} from "../../util/utils";
+    
+} from "../../util/animeList";
+
+import { constructRecommendationURL, filterDuplicateRecommendedAnime} from "../../util";
 
 import { FAILED_TO_FETCH_DATA } from "../../constants/error-messages";
 

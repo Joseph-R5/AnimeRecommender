@@ -3,7 +3,7 @@ import {
     ADD_ANIME,
 } from "../../constants/action-types";
 
-import { getExactAnimeFromAPI } from "../../util/utils";
+import { getExactAnimeFromAPI } from "../../util/";
 
 import { NO_DATA_EXISTS_FOR_GIVEN_ANIME } from "../../constants/error-messages";
 import { loadErrorMessage } from "../errorHandler";

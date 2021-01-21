@@ -8,7 +8,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import 'fontsource-roboto';
 import { toggleModal, increaseRecommendedIndex, decreaseRecommendedIndex, loadSpinner } from "../../actions/index";
-import { animeRecommendationListSlicer, showArrowNext, showArrowBack } from "../../util/utils";
+import {showArrowBack, showArrowNext, animeRecommendationListSlicer} from "../../util";
 import { LOAD_MODAL_SPINNER } from "../../constants/action-types";
 
 const RecommendedAnimes = (props) => {

@@ -12,7 +12,7 @@ import SideMenu from "../SideMenu/sideMenu";
 import DynamicRecommendationsList from "../DynamicRecommendationsList/dynamicRecommendationsList";
 import Modal from "../Modal/modal"
 
-import { MOVIE, ONA, OVA, TV } from "../../constants/filter-options";
+import { MOVIE, ONA,  TV } from "../../constants/filter-options";
 import { getRecommendationlist, clearRecommendations } from "../../actions/index";
 import { withHooksHOC } from "../RecommendationAnimeListContainer/recommendationAnimeListContainer";
 

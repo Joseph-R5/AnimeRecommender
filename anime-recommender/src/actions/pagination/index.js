@@ -1,8 +1,9 @@
 import {
     increaseRecommendedIndexHelper,
     decreaseRecommendedIndexHelper,
-    getSectionIndexOption
-} from "../../util/utils";
+} from "../../util/";
+
+import { getSectionIndexOption} from "../../util";
 
 export function increaseRecommendedIndex(index, recommendedListLength, section) {
     const newCurrentIndex = increaseRecommendedIndexHelper(index, recommendedListLength)
