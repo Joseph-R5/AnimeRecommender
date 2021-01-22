@@ -15,7 +15,7 @@ import Modal from "../Modal/modal"
 import { MOVIE, ONA, TV } from "../../constants/filter-options";
 import { getRecommendationlist, clearRecommendations } from "../../actions/index";
 import { withHooksHOC } from "../RecommendationAnimeListContainer/recommendationAnimeListContainer";
-import { loadRecommendations } from "../../util";
+import { loadRecommendations, hasOneSection } from "../../util";
 
 const classes = makeStyles((theme) => ({
     root: {
@@ -57,6 +57,7 @@ class RecommendationAnimeList extends Component {
         const showLoader =
             loadingAnimeList || loadingModal
             || loadingFilter || loadingGenre;
+        const listHeight = hasOneSection(movieRecommendations, tvRecommendations, onaRecommendations);
 
         if (loadRecommendations(movieRecommendations, tvRecommendations, onaRecommendations)) {
             return (
@@ -75,7 +76,7 @@ class RecommendationAnimeList extends Component {
                                 style={{
                                     backgroundColor: '#24323F',
                                     boxShadow: "0px 0 10px rgba(0, 0, 0, 0.8);",
-                                    height: '100%',
+                                    height: listHeight,
                                     paddingBottom: '21px',
                                 }}>
                                 {showLoader ? <Spinner /> : null}
