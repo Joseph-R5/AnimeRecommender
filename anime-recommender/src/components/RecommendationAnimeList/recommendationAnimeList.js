@@ -12,9 +12,10 @@ import SideMenu from "../SideMenu/sideMenu";
 import DynamicRecommendationsList from "../DynamicRecommendationsList/dynamicRecommendationsList";
 import Modal from "../Modal/modal"
 
-import { MOVIE, ONA,  TV } from "../../constants/filter-options";
+import { MOVIE, ONA, TV } from "../../constants/filter-options";
 import { getRecommendationlist, clearRecommendations } from "../../actions/index";
 import { withHooksHOC } from "../RecommendationAnimeListContainer/recommendationAnimeListContainer";
+import { loadRecommendations } from "../../util";
 
 const classes = makeStyles((theme) => ({
     root: {
@@ -57,7 +58,7 @@ class RecommendationAnimeList extends Component {
             loadingAnimeList || loadingModal
             || loadingFilter || loadingGenre;
 
-        if (movieRecommendations.length > 0) {
+        if (loadRecommendations(movieRecommendations, tvRecommendations, onaRecommendations)) {
             return (
                 <div className="recAnimeListContainer">
                     <Grid container spacing={0}>

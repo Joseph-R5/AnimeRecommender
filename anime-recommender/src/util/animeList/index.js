@@ -17,7 +17,11 @@ export const animeRecommendationListSlicer = (index, recommendedAnimeList, isMob
     return newRecommendedAnimeList;
 }
 
-
-
+export const loadRecommendations = (movies, tvs, onas) => {
+    if (movies.length > 0 || tvs.length > 0 || onas.length > 0) {
+        return true;
+    }
+    return false;
+}
 
 

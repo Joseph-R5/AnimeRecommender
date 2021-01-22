@@ -1,5 +1,5 @@
 import React from 'react';
-import useCheckMobileScreen from "../../hooks/useCheckMobileScreen";
+import {useCheckMobileScreen} from "../../hooks";
 
 export const withHooksHOC = (Component) => {
     return (props) => {

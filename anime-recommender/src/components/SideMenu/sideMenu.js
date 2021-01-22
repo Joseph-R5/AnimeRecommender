@@ -9,9 +9,8 @@ import AnimeListChip from "../AnimeListChip/animeListChip";
 import { makeStyles } from "@material-ui/core/styles";
 import { calculateDrawerWidth, calculateScrollDrawerPosition } from "../../util/";
 import { setMobileOpen } from "../../actions/index";
-import useScrollbar from "../../hooks/useScrollbar";
+import { useScrollbar, useWindowSize} from "../../hooks";
 import "./sideMenu.css";
-import useWindowSize from "../../hooks/useWindowSize";
 
 const useStyles = (scrollPosition, scrollDrawerWidth) => makeStyles((theme) => ({
     root: {
