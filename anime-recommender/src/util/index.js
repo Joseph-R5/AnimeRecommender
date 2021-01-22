@@ -26,7 +26,8 @@ import {
 
 import {
     animeRecommendationListSlicer, 
-    filterDuplicateRecommendedAnime
+    filterDuplicateRecommendedAnime,
+    loadRecommendations
 } from "./animeList";
 
 import { numberFormatter } from "./number";
@@ -50,5 +51,6 @@ export {
     convertAcronym,
     getSectionIndexOption,
     animeRecommendationListSlicer, 
-    filterDuplicateRecommendedAnime
+    filterDuplicateRecommendedAnime,
+    loadRecommendations
 }
