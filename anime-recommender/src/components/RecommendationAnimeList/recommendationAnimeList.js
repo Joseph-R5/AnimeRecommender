@@ -50,7 +50,7 @@ class RecommendationAnimeList extends Component {
             showMobileView, loadingModal, loadingFilter, loadingGenre
         } = this.props;
 
-        const size = showMobileView ? 12 : 10;
+        const size = showMobileView ? 13 : 10;
         const showLoader =
             loadingAnimeList || loadingModal
             || loadingFilter || loadingGenre;
