@@ -45,7 +45,10 @@ const RecommendedAnimes = (props) => {
                 </div>
                 <div className="recommendedAnimeList">
                     {slicedList.map(el => (
-                        <div className="recommendedAnimeItem">
+                        <div 
+                            className="recommendedAnimeItem"
+                            key={"key-" + el.title}
+                        >
                             <Card
                                 style={{
                                     height: 360,

@@ -15,8 +15,12 @@ const AnimeListChip = (props) => {
                 <div className="myAnimeListContainer">
                     {animeTitleList.map((anime, index) => {
                         return (
-                            <div className="myAnimeListItem">
+                            <div 
+                                className="myAnimeListItem"
+                                key={"key-" + anime}
+                            >
                                 <Chip
+                                    key={"key-" + anime}
                                     variant="outlined"
                                     onDelete={() => deleteAnimeFromList(index)}
                                     label={

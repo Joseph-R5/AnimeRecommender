@@ -92,7 +92,7 @@ const Modal = (props) => {
                         }}
                         color="primary"
                     >
-                        +Add
+                        Add
                     </Button>
                     <Button
                         autoFocus

@@ -27,7 +27,7 @@ const useStyles = (scrollPosition, scrollDrawerWidth) => makeStyles((theme) => (
         height: '100%',
         width: scrollDrawerWidth,
         top: scrollPosition,
-        boxShadow: "10px 2px 10px -2px rgba(0,0,0,0.3)"
+        boxShadow: "10px 2px 10px -2px rgba(0,0,0,0.3)",
     },
     drawerPaperMobile: {
         background: '#3B4956',

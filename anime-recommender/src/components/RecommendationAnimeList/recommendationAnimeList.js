@@ -72,7 +72,7 @@ class RecommendationAnimeList extends Component {
                                 className={classes.paper}
                                 style={{
                                     backgroundColor: '#24323F',
-                                    boxShadow: "0px 0 10px rgba(0, 0, 0, 0.8);",
+                                    // boxShadow: "0px 0 10px rgba(0, 0, 0, 0.8)",
                                     height: listHeight,
                                     paddingBottom: '21px',
                                 }}>

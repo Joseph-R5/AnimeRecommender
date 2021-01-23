@@ -21,7 +21,10 @@ const DynamicRecommendationsList = (props) => {
                     <div className="paginationContainer">
                         {
                             paginationPageCount.map((val, pageIndex) => {
-                                return <div className="paginationItem">
+                                return <div 
+                                    className="paginationItem"
+                                    key={"key-" + val}
+                                >
                                     <div
                                         className={getActivePage(index, pageIndex, paginationPageCount)}
                                     />

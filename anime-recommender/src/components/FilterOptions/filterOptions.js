@@ -14,7 +14,7 @@ const FilterOptions = (props) => {
             <ul className="filterOptionsList">
                 {filterOptions.map((option) => {
                     if (option) {
-                        return <li>
+                        return <li key={"key-" + option.title}>
                             <FormControlLabel
                                 control={
                                     <Checkbox
