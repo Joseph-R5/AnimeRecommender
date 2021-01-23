@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Spinner from "../Spinner/spinner";
@@ -13,20 +12,7 @@ import Modal from "../Modal"
 import { MOVIE, ONA, TV } from "../../constants/filter-options";
 import { getRecommendationlist, clearRecommendations } from "../../actions/index";
 import { loadRecommendations, hasOneSection } from "../../util";
-
-const classes = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1
-    },
-    paper: {
-        padding: theme.spacing(0),
-        textAlign: 'center',
-        color: 'theme.palette.text.secondary',
-    },
-    cover: {
-        width: 151,
-    },
-}));
+import { recommendationAnimeListStyles } from "../../styles";
 
 class RecommendationAnimeList extends Component {
     componentDidUpdate(prevProps) {
@@ -62,14 +48,14 @@ class RecommendationAnimeList extends Component {
                     <Grid container spacing={0}>
                         <Grid item xs={2}>
                             <Paper
-                                className={classes.paper}
+                                className={recommendationAnimeListStyles.paper}
                             >
                                 <SideMenu />
                             </Paper>
                         </Grid>
                         <Grid item xs={size}>
                             <Paper
-                                className={classes.paper}
+                                className={recommendationAnimeListStyles.paper}
                                 style={{
                                     backgroundColor: '#24323F',
                                     height: listHeight,

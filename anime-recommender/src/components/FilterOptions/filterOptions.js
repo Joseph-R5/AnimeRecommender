@@ -7,7 +7,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { toggleFilterButton, loadSpinner } from "../../actions/index";
 import { LOAD_FILTER_SPINNER } from '../../constants/action-types';
 
-
 const FilterOptions = (props) => {
     const { filterOptions, toggleFilterButton, loadSpinner } = props;
 

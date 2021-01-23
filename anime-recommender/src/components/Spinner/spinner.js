@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Dialog from '@material-ui/core/Dialog';
 import './spinner.css';

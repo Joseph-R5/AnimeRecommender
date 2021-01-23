@@ -6,37 +6,11 @@ import Hidden from "@material-ui/core/Hidden";
 import FilterOptions from "../FilterOptions";
 import GenreOptions from "../GenreOptions";
 import AnimeListChip from "../AnimeListChip";
-import { makeStyles } from "@material-ui/core/styles";
 import { calculateDrawerWidth, calculateScrollDrawerPosition } from "../../util/";
 import { setMobileOpen } from "../../actions/index";
 import { useScrollbar, useWindowSize} from "../../hooks";
+import { sideMenuStyles } from "../../styles";
 import "./sideMenu.css";
-
-const useStyles = (scrollPosition, scrollDrawerWidth) => makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
-        [theme.breakpoints.up("sm")]: {
-            display: "none"
-        }
-    },
-    drawerPaper: {
-        background: '#3B4956',
-        height: '100%',
-        width: scrollDrawerWidth,
-        top: scrollPosition,
-        boxShadow: "10px 2px 10px -2px rgba(0,0,0,0.3)",
-    },
-    drawerPaperMobile: {
-        background: '#3B4956',
-        height: '100%',
-        width: 317,
-        boxShadow: "10px 2px 10px -2px rgba(0,0,0,0.3)"
-    },
-}));
-
 
 const SideMenu = (props) => {
     const { mobileOpen, setMobileOpen } = props;
@@ -44,7 +18,7 @@ const SideMenu = (props) => {
     const scrollDrawerPosition = calculateScrollDrawerPosition(scrollPosition)
     const screenWidth = useWindowSize().width;
     const scrollDrawerWidth = calculateDrawerWidth(screenWidth);
-    const classes = useStyles(scrollDrawerPosition, scrollDrawerWidth)();
+    const classes = sideMenuStyles(scrollDrawerPosition, scrollDrawerWidth)();
 
     const drawer = (
         <div className="drawerContainer">
