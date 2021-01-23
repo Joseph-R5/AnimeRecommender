@@ -31,16 +31,16 @@ export const convertAcronym = (section) => {
     return section === ONA ? "Original Net Animation" : section;
 }
 
-export const calculateSectionPaddingBottom = (width) => {
+export const calculateSectionPaddingBottom = (width, listLength) => {
     if (width !== undefined) {
         if (width > 1763) {
             return 70;
         } else if (width >= 810) {
-            return 450;
+            return 70 + (65 * listLength);
         } else if (width >= 590) {
-            return 820;
+            return 100 + (120 * listLength);
         } else if (width > 0) {
-            return 1900;
+            return listLength * 315;
         }
     }
 }
