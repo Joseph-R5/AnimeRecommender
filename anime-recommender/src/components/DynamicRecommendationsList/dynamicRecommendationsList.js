@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './dynamicRecommendationsList.css';
-import RecommendedAnimes from "../RecommendedAnimes/recommendedAnimes";
+import RecommendedAnimes from "../RecommendedAnimes";
 import "./dynamicRecommendationsList.css";
 import { getPaginationPageCount, getActivePage, convertAcronym } from "../../util";
 

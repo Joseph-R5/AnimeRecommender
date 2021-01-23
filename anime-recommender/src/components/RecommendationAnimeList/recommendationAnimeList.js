@@ -7,14 +7,14 @@ import Paper from '@material-ui/core/Paper';
 import Spinner from "../Spinner/spinner";
 import PropTypes from 'prop-types';
 import "./recommendationAnimeList.css";
+import { withHooksHOC } from "./recommendationAnimeListContainer";
 
-import SideMenu from "../SideMenu/sideMenu";
-import DynamicRecommendationsList from "../DynamicRecommendationsList/dynamicRecommendationsList";
-import Modal from "../Modal/modal"
+import SideMenu from "../SideMenu";
+import DynamicRecommendationsList from "../DynamicRecommendationsList";
+import Modal from "../Modal"
 
 import { MOVIE, ONA, TV } from "../../constants/filter-options";
 import { getRecommendationlist, clearRecommendations } from "../../actions/index";
-import { withHooksHOC } from "../RecommendationAnimeListContainer/recommendationAnimeListContainer";
 import { loadRecommendations, hasOneSection } from "../../util";
 
 const classes = makeStyles((theme) => ({

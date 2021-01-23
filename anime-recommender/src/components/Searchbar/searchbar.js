@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import "./searchbar.css";
 import PropTypes from 'prop-types';
-import ErrorMessage from "../ErrorMessage/errorMessage";
+import ErrorMessage from "../ErrorMessage";
 import { withStyles } from '@material-ui/core/styles'
 
 import {

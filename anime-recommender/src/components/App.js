@@ -1,7 +1,7 @@
 import React from "react";
-import SearchBar from "./Searchbar/searchbar";
-import Title from "./Title/title";
-import RecommendationAnimeList from "./RecommendationAnimeList/recommendationAnimeList";
+import SearchBar from "./Searchbar";
+import Title from "./Title";
+import RecommendationAnimeList from "./RecommendationAnimeList";
 import "./App.css";
 
 const App = () => {
