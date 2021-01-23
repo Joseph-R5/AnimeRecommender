@@ -21,9 +21,7 @@ const RecommendedAnimes = (props) => {
 
     const slicedList = animeRecommendationListSlicer(index, list, false)
     const screenWidth = useWindowSize().width;
-
-    // Pass in sliced list . length
-    const bottomPadding = calculateSectionPaddingBottom(screenWidth); 
+    const bottomPadding = calculateSectionPaddingBottom(screenWidth, slicedList.length); 
 
     if (slicedList.length > 0) {
         return ( 
