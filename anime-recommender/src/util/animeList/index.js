@@ -24,4 +24,21 @@ export const loadRecommendations = (movies, tvs, onas) => {
     return false;
 }
 
+export const hasOneSection = (movies, tvs, onas) => {
+    let count = 0;
+
+    if (movies.length > 0) {
+        count++;
+    }
+
+    if (tvs.length > 0) {
+        count++;
+    }
+
+    if (onas.length > 0) {
+        count++;
+    }
+
+    return count === 1 ? '165%' : '100%';
+}
 
