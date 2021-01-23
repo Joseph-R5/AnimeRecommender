@@ -8,8 +8,9 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import 'fontsource-roboto';
 import { toggleModal, increaseRecommendedIndex, decreaseRecommendedIndex, loadSpinner } from "../../actions/index";
-import {showArrowBack, showArrowNext, animeRecommendationListSlicer} from "../../util";
+import {showArrowBack, showArrowNext, animeRecommendationListSlicer, calculateSectionPaddingBottom} from "../../util";
 import { LOAD_MODAL_SPINNER } from "../../constants/action-types";
+import { useWindowSize } from "../../hooks";
 
 const RecommendedAnimes = (props) => {
     const {
@@ -19,10 +20,19 @@ const RecommendedAnimes = (props) => {
     } = props;
 
     const slicedList = animeRecommendationListSlicer(index, list, false)
+    const screenWidth = useWindowSize().width;
+
+    // Pass in sliced list . length
+    const bottomPadding = calculateSectionPaddingBottom(screenWidth); 
 
     if (slicedList.length > 0) {
-        return (
-            <div className="recommendedAnimeSecionList">
+        return ( 
+            <div 
+                className="recommendedAnimeSecionList"
+                style={{
+                    paddingBottom: bottomPadding
+                }}
+            >
                 <div className="arrowLeft">
                     <ArrowBackIcon
                         fontSize="large"

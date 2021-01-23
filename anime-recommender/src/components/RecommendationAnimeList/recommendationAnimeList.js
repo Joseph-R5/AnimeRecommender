@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -8,11 +7,9 @@ import Spinner from "../Spinner/spinner";
 import PropTypes from 'prop-types';
 import "./recommendationAnimeList.css";
 import { withHooksHOC } from "./recommendationAnimeListContainer";
-
 import SideMenu from "../SideMenu";
 import DynamicRecommendationsList from "../DynamicRecommendationsList";
 import Modal from "../Modal"
-
 import { MOVIE, ONA, TV } from "../../constants/filter-options";
 import { getRecommendationlist, clearRecommendations } from "../../actions/index";
 import { loadRecommendations, hasOneSection } from "../../util";
@@ -28,7 +25,7 @@ const classes = makeStyles((theme) => ({
     },
     cover: {
         width: 151,
-    }
+    },
 }));
 
 class RecommendationAnimeList extends Component {
@@ -90,11 +87,6 @@ class RecommendationAnimeList extends Component {
                                     animeList={movieRecommendations}
                                     index={movieRecommendationIndex}
                                 />
-                                {/* <DynamicRecommendationsList
-                                    section={OVA}
-                                    animeList={ovaRecommendations}
-                                    index={ovaRecommendationIndex}
-                                /> */}
                                 <DynamicRecommendationsList
                                     section={ONA}
                                     animeList={onaRecommendations}
@@ -122,12 +114,10 @@ function mapStateToProps(state) {
         showErrorMsg: state.errorHandler.showErrorMsg,
         errorResponse: state.errorHandler.errorResponse,
         showModal: state.modalReducer.showModal,
-
         loadingAnimeList: state.animeListReducer.loadingAnimeList,
         loadingModal: state.modalReducer.loadingModal,
         loadingFilter: state.filters.loadingFilter,
         loadingGenre: state.genres.loadingGenre,
-
         recommendedIndex: state.animeListReducer.recommendedIndex,
         movieRecommendations: state.recommendations.movieRecommendations,
         tvRecommendations: state.recommendations.tvRecommendations,

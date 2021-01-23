@@ -1,10 +1,8 @@
 .recommendedAnimeSecionList {
     display:flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding-bottom: 70px;
 }
 
 .recommendedAnimeList {
@@ -27,10 +25,6 @@
     cursor: pointer;
 }
 
-.recommendedAnimeSecionList li:hover {
-    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-}
-
 h1 {
     color: #e5e5e5;
 }
@@ -43,11 +37,13 @@ h1 {
 
 .arrowRight {
     padding-left: 20px;
+    padding-right: 20px;
     transition: transform .2s
 }
 
 .arrowLeft {
     padding-right: 20px;
+    padding-left: 20px;
     transition: transform .2s
 }
 
