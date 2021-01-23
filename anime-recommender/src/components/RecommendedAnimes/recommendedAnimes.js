@@ -103,4 +103,8 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
+RecommendedAnimes.propTypes = {
+    showModal: PropTypes.bool
+}
+
 export default connect(mapStateToProps, mapDispatchToProps)(RecommendedAnimes);

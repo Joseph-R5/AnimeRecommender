@@ -100,4 +100,8 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
+SideMenu.propTypes = {
+    mobileOpen: PropTypes.bool
+}
+
 export default connect(mapStateToProps, mapDispatchToProps)(SideMenu);

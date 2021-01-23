@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import './dynamicRecommendationsList.css';
 import RecommendedAnimes from "../RecommendedAnimes";
 import "./dynamicRecommendationsList.css";
@@ -44,16 +42,4 @@ const DynamicRecommendationsList = (props) => {
     } else { return null; }
 }
 
-function mapStateToProps(state) {
-    return {
-
-    }
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(DynamicRecommendationsList)
+export default DynamicRecommendationsList;

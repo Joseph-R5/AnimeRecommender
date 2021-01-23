@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import './animeListChip.css';
 import Chip from '@material-ui/core/Chip';
 import Typography from "@material-ui/core/Typography";
@@ -64,5 +65,8 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
+AnimeListChip.propTypes = {
+    animeTitleList: PropTypes.array
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(AnimeListChip);

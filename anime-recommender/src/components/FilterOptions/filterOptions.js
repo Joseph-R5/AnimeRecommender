@@ -1,10 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './filterOptions.css';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { toggleFilterButton, loadSpinner } from "../../actions/index";
 import { LOAD_FILTER_SPINNER } from '../../constants/action-types';
+
 
 const FilterOptions = (props) => {
     const { filterOptions, toggleFilterButton, loadSpinner } = props;
@@ -54,6 +56,10 @@ function mapDispatchToProps(dispatch) {
         toggleFilterButton: (option) => dispatch(toggleFilterButton(option)),
         loadSpinner: (type, bool) => dispatch(loadSpinner(type, bool))
     }
+}
+
+FilterOptions.propTypes = {
+    filterOptions: PropTypes.array
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FilterOptions);
