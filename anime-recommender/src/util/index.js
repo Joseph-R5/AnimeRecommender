@@ -16,7 +16,8 @@ import {
 import {
     calculateScrollDrawerPosition,
     calculateDrawerWidth,
-    convertAcronym
+    convertAcronym,
+    calculateSectionPaddingBottom
 } from "./styles";
 
 import {
@@ -54,5 +55,6 @@ export {
     animeRecommendationListSlicer, 
     filterDuplicateRecommendedAnime,
     loadRecommendations,
-    hasOneSection
+    hasOneSection,
+    calculateSectionPaddingBottom
 }

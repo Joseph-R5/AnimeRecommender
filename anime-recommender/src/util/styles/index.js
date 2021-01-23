@@ -30,3 +30,17 @@ export const calculateDrawerWidth = (positionX) => {
 export const convertAcronym = (section) => {
     return section === ONA ? "Original Net Animation" : section;
 }
+
+export const calculateSectionPaddingBottom = (width) => {
+    if (width !== undefined) {
+        if (width > 1763) {
+            return 70;
+        } else if (width >= 810) {
+            return 450;
+        } else if (width >= 590) {
+            return 820;
+        } else if (width > 0) {
+            return 1900;
+        }
+    }
+}
