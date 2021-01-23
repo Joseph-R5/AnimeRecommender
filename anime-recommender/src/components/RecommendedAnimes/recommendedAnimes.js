@@ -45,7 +45,10 @@ const RecommendedAnimes = (props) => {
                 </div>
                 <div className="recommendedAnimeList">
                     {slicedList.map(el => (
-                        <div className="recommendedAnimeItem">
+                        <div 
+                            className="recommendedAnimeItem"
+                            key={"key-" + el.title}
+                        >
                             <Card
                                 style={{
                                     height: 360,
@@ -98,6 +101,10 @@ function mapDispatchToProps(dispatch) {
         decreaseRecommendedIndex: (index, section) => dispatch(decreaseRecommendedIndex(index, section)),
         loadSpinner: (type, bool) => dispatch(loadSpinner(type, bool))
     }
+}
+
+RecommendedAnimes.propTypes = {
+    showModal: PropTypes.bool
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecommendedAnimes);

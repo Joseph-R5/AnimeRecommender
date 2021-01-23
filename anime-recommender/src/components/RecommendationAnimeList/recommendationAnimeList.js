@@ -72,7 +72,6 @@ class RecommendationAnimeList extends Component {
                                 className={classes.paper}
                                 style={{
                                     backgroundColor: '#24323F',
-                                    boxShadow: "0px 0 10px rgba(0, 0, 0, 0.8);",
                                     height: listHeight,
                                     paddingBottom: '21px',
                                 }}>
@@ -145,7 +144,19 @@ RecommendationAnimeList.propTypes = {
     errorResponse: PropTypes.string,
     showErrorMsg: PropTypes.bool,
     showModal: PropTypes.bool,
-    isLoading: PropTypes.bool
+    loadingAnimeList: PropTypes.bool,
+    loadingModal: PropTypes.bool,
+    loadingFilter: PropTypes.bool,
+    loadingGenre: PropTypes.bool,
+    recommendedIndex: PropTypes.number,
+    movieRecommendations: PropTypes.array,
+    tvRecommendations: PropTypes.array,
+    ovaRecommendations: PropTypes.array,
+    onaRecommendations: PropTypes.array,
+    tvRecommendationIndex: PropTypes.number,
+    movieRecommendationIndex: PropTypes.number,
+    ovaRecommendationIndex: PropTypes.number,
+    onaRecommendationIndex: PropTypes.number
 }
 
 export default

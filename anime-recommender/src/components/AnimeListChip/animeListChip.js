@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import './animeListChip.css';
 import Chip from '@material-ui/core/Chip';
 import Typography from "@material-ui/core/Typography";
@@ -15,8 +16,12 @@ const AnimeListChip = (props) => {
                 <div className="myAnimeListContainer">
                     {animeTitleList.map((anime, index) => {
                         return (
-                            <div className="myAnimeListItem">
+                            <div 
+                                className="myAnimeListItem"
+                                key={"key-" + anime}
+                            >
                                 <Chip
+                                    key={"key-" + anime}
                                     variant="outlined"
                                     onDelete={() => deleteAnimeFromList(index)}
                                     label={
@@ -60,5 +65,8 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
+AnimeListChip.propTypes = {
+    animeTitleList: PropTypes.array
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(AnimeListChip);

@@ -5,6 +5,8 @@ import { setMobileOpen } from "../../actions/index";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import { makeStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+
 
 const useStyles = makeStyles((theme) => ({
     menuButton: {
@@ -51,6 +53,11 @@ function mapDispatchToProps(dispatch) {
     return {
         setMobileOpen: (payload) => dispatch(setMobileOpen(payload))
     }
+}
+
+Title.propTypes = {
+    mobileOpen: PropTypes.bool,
+    animeTitleList: PropTypes.array
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Title);
