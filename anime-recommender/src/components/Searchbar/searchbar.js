@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import "./searchbar.css";
 import PropTypes from 'prop-types';
 import ErrorMessage from "../ErrorMessage";
-import { withStyles } from '@material-ui/core/styles'
-
+import { LOAD_ANIME_LIST_SPINNER } from "../../constants/action-types";
+import { SearchBarStyles } from "../../styles";
 import {
     autoCompleteSearchBar,
     clearAutoCompleteSuggestions,
@@ -14,26 +13,6 @@ import {
     addAnime,
     loadSpinner
 } from "../../actions/index";
-import { LOAD_ANIME_LIST_SPINNER } from "../../constants/action-types";
-
-const CssTextField = withStyles({
-    root: {
-        '& label.Mui-focused': {
-            color: 'grey',
-        },
-        '& .MuiOutlinedInput-root': {
-            '& fieldset': {
-                borderColor: 'grey',
-            },
-            '&.Mui-focused fieldset': {
-                borderColor: 'grey',
-            },
-        },
-        '& .MuiInputBase-root': {
-            color: '#red',
-        }
-    }
-})(TextField);
 
 class ConnectedSearchBar extends Component {
     constructor(props) {
@@ -95,7 +74,7 @@ class ConnectedSearchBar extends Component {
                     loadingText="Searching..."
                     onChange={(event, value) => this.handleOnClick(value)}
                     renderInput={(params) => (
-                        <CssTextField
+                        <SearchBarStyles
                             {...params}
                             onChange={this.handleChange}
                             label="Enter your anime here"

@@ -1,37 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
 import genreList from "../../data/genreListData";
 import PropTypes from 'prop-types';
 import "./genreOptions.css";
-
 import { updateGenreList, loadSpinner } from "../../actions/index";
 import { LOAD_GENRE_SPINNER } from '../../constants/action-types';
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        paddingLeft: 20,
-        paddingRight: 20,
-    },
-}));
-
-const CssTextField = withStyles({
-    root: {
-        '& .MuiInputBase-root': {
-            color: 'white',
-        }
-    }
-})(TextField);
-
+import { GenreOptionsStyles } from "../../styles";
 
 const GenreOptions = (props) => {
-    const classes = useStyles();
     const { updateGenreList, loadSpinner } = props;
 
     return (
-        <div className={classes.root}>
+        <div className="genreOptionsContainer">
             <h2 className="optionsTitle">Filters</h2>
             <Autocomplete
                 multiple
@@ -42,7 +23,7 @@ const GenreOptions = (props) => {
                     updateGenreList(values)
                 }}
                 renderInput={(params) => (
-                    <CssTextField
+                    <GenreOptionsStyles
                         {...params}
                         placeholder="Genre"
                         variant="standard"
