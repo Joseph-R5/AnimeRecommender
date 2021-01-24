@@ -73,6 +73,7 @@ class ConnectedSearchBar extends Component {
                     loading
                     loadingText="Searching..."
                     onChange={(event, value) => this.handleOnClick(value)}
+                    value={this.state.text}
                     renderInput={(params) => (
                         <SearchBarStyles
                             {...params}
