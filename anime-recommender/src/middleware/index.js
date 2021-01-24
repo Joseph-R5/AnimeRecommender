@@ -36,6 +36,7 @@ export const checkIfAnimeAlreadyExistsMiddleware = store => next => action => {
       }
       break;
     case DELETE_ANIME:
+      alert("MIDDLEWARE")
       const animeTitleListCount = store.getState().animeListReducer.animeTitleList.length;
       if (animeTitleListCount === 1) {
         const errorMessage = EMPTY_ANIME_LIST;

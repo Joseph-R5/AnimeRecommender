@@ -23,7 +23,7 @@ const AnimeListChip = (props) => {
                                 <Chip
                                     key={"key-" + anime}
                                     variant="outlined"
-                                    onDelete={() => deleteAnimeFromList(index)}
+                                    onDelete={() => deleteAnimeFromList(null, index)}
                                     label={
                                         <Typography
                                             style={{
@@ -61,7 +61,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        deleteAnimeFromList: (index) => dispatch(deleteAnimeFromList(index))
+        deleteAnimeFromList: (n, index) => dispatch(deleteAnimeFromList(n, index))
     }
 }
 

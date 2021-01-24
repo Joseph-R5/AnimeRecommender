@@ -29,6 +29,10 @@ export function addAnime(payload) {
     }
 }
 
-export function deleteAnimeFromList(payload) {
-    return { type: DELETE_ANIME, payload }
+export function deleteAnimeFromList(dispatch, payload) {
+    if (dispatch) {
+        dispatch({ type: DELETE_ANIME, payload })
+    } else {
+        return { type: DELETE_ANIME, payload }
+    }
 }
