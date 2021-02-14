@@ -12,7 +12,7 @@ const Title = (props) => {
     const classes = titleStyles();
 
     return (
-        <div>
+        <div className="titleContainer">
             {!mobileOpen && animeTitleList.length > 0 ?
                 <IconButton
                     color="inherit"

@@ -24,7 +24,7 @@ class ConnectedSearchBar extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleOnClick = this.handleOnClick.bind(this);
-        this.handlePromise = this.handlePromise.bind(this);
+        this.addAnimeToAnimeList = this.addAnimeToAnimeList.bind(this);
     }
 
     handleChange(event) {
@@ -49,11 +49,11 @@ class ConnectedSearchBar extends Component {
         this.setState({
             text: ""
         }, () => {
-            this.handlePromise(anime);
+            this.addAnimeToAnimeList(anime);
         })
     }
 
-    handlePromise(anime) {
+    addAnimeToAnimeList(anime) {
         const { addAnime, loadSpinner } = this.props;
 
         loadSpinner(LOAD_ANIME_LIST_SPINNER, true);
